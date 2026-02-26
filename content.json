@@ -1,11 +1,15 @@
 {
   "hero": {
-    "headline": ["Our mission", "is advancing", "yours."],
+    "headline": [
+      "Our missions",
+      "is advancing",
+      "yours."
+    ],
     "cta": "Start a Conversation"
   },
   "testimonials": [
     {
-      "quote": "We know from serving our clients that when dedicated folks come together for the \u2018greater good,\u2019 anything is possible.",
+      "quote": "We know from serving our clients that when dedicated folks come together for the ‘greater good,’ anything is possible.",
       "name": "Jeanne Marie Ellis",
       "title": "Founder, JME Group",
       "photo": "images/jeanne-marie-ellis.jpg"
@@ -39,8 +43,14 @@
       "Mission advancement requires the use of best practices, hard work, persistence, and a healthy sense of humor. The decisions your organization makes today will dictate the capacity of your community impact tomorrow."
     ],
     "stats": [
-      { "number": 30, "label": "Years Experience" },
-      { "number": 50, "label": "Organizations Served" }
+      {
+        "number": 30,
+        "label": "Years Experience"
+      },
+      {
+        "number": 50,
+        "label": "Organizations Served"
+      }
     ],
     "ctaQuestions": [
       "What strategies will drive your mission forward?",
@@ -77,7 +87,7 @@
       "listHeading": "Deliverables",
       "deliverables": [
         "Current strategic plan review and evaluation",
-        "\u201cGaps\u201d analysis",
+        "“Gaps” analysis",
         "Strategic plan facilitation",
         "A relevant, logical plan you will actually use -- with measurable strategies"
       ]
@@ -128,63 +138,204 @@
     {
       "category": "Charitable\nOrganizations",
       "clients": [
-        { "name": "Agape Pregnancy Resource Center", "location": "Round Rock, TX" },
-        { "name": "Bolivar Point Lighthouse Foundation", "location": "Port Bolivar, TX" },
-        { "name": "Children's Bereavement Center of South Texas", "location": "San Antonio, TX" },
-        { "name": "Explore Austin", "location": "Austin, TX" },
-        { "name": "The Genesis Project", "location": "Seattle, WA" },
-        { "name": "Game Plan for Hope", "location": "Hills, MN" },
-        { "name": "Greater Austin Foundation for the Deaf", "location": "Austin, TX" },
-        { "name": "Greater Austin YMCA", "location": "Austin, TX" },
-        { "name": "Heart of Texas Pregnancy Resource Center", "location": "Austin, TX" },
-        { "name": "HOPE Alliance", "location": "Round Rock, TX" },
-        { "name": "M25", "location": "Leander, TX" },
-        { "name": "Partners in Hope", "location": "Lakeway, TX; Cedar Park, TX" },
-        { "name": "Red Oak Hope", "location": "Austin, TX" },
-        { "name": "Round Rock Area Arts Council", "location": "Round Rock, TX" },
-        { "name": "Round Rock Area Serving Center", "location": "Round Rock, TX" },
-        { "name": "Samaritan Health Ministries", "location": "Leander, TX" },
-        { "name": "Team Luke Hope for Minds", "location": "Lubbock, TX; Austin, TX" },
-        { "name": "Universal Benefits Consortium Cares Foundation", "location": "Southlake, TX" },
-        { "name": "YMCA of Central Texas", "location": "Round Rock, TX" },
-        { "name": "YMCA of Metropolitan Washington", "location": "Washington, DC" },
-        { "name": "YMCA Mid-Majors Group", "location": "Chicago, IL" }
+        {
+          "name": "Agape Pregnancy Resource Center",
+          "location": "Round Rock, TX"
+        },
+        {
+          "name": "Bolivar Point Lighthouse Foundation",
+          "location": "Port Bolivar, TX"
+        },
+        {
+          "name": "Children's Bereavement Center of South Texas",
+          "location": "San Antonio, TX"
+        },
+        {
+          "name": "Explore Austin",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "The Genesis Project",
+          "location": "Seattle, WA"
+        },
+        {
+          "name": "Game Plan for Hope",
+          "location": "Hills, MN"
+        },
+        {
+          "name": "Greater Austin Foundation for the Deaf",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Greater Austin YMCA",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Heart of Texas Pregnancy Resource Center",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "HOPE Alliance",
+          "location": "Round Rock, TX"
+        },
+        {
+          "name": "M25",
+          "location": "Leander, TX"
+        },
+        {
+          "name": "Partners in Hope",
+          "location": "Lakeway, TX; Cedar Park, TX"
+        },
+        {
+          "name": "Red Oak Hope",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Round Rock Area Arts Council",
+          "location": "Round Rock, TX"
+        },
+        {
+          "name": "Round Rock Area Serving Center",
+          "location": "Round Rock, TX"
+        },
+        {
+          "name": "Samaritan Health Ministries",
+          "location": "Leander, TX"
+        },
+        {
+          "name": "Team Luke Hope for Minds",
+          "location": "Lubbock, TX; Austin, TX"
+        },
+        {
+          "name": "Universal Benefits Consortium Cares Foundation",
+          "location": "Southlake, TX"
+        },
+        {
+          "name": "YMCA of Central Texas",
+          "location": "Round Rock, TX"
+        },
+        {
+          "name": "YMCA of Metropolitan Washington",
+          "location": "Washington, DC"
+        },
+        {
+          "name": "YMCA Mid-Majors Group",
+          "location": "Chicago, IL"
+        }
       ]
     },
     {
       "category": "Municipalities, Chambers\n& Churches",
       "clients": [
-        { "name": "Austin Christian Fellowship", "location": "Austin, TX" },
-        { "name": "Cedar Park Historic & Cultural Preservation Commission", "location": "Cedar Park, TX" },
-        { "name": "Central Fort Bend Chamber Alliance", "location": "Rosenberg, TX" },
-        { "name": "City of Cedar Park 4B Community Development Corporation", "location": "Cedar Park, TX" },
-        { "name": "City of Taylor / Taylor Parks Foundation", "location": "Taylor, TX" },
-        { "name": "Go Hillsboro", "location": "Hillsboro, TX" },
-        { "name": "Seguin Area Chamber of Commerce", "location": "Seguin, TX" },
-        { "name": "Taylor Chamber of Commerce", "location": "Taylor, TX" }
+        {
+          "name": "Austin Christian Fellowship",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Cedar Park Historic & Cultural Preservation Commission",
+          "location": "Cedar Park, TX"
+        },
+        {
+          "name": "Central Fort Bend Chamber Alliance",
+          "location": "Rosenberg, TX"
+        },
+        {
+          "name": "City of Cedar Park 4B Community Development Corporation",
+          "location": "Cedar Park, TX"
+        },
+        {
+          "name": "City of Taylor / Taylor Parks Foundation",
+          "location": "Taylor, TX"
+        },
+        {
+          "name": "Go Hillsboro",
+          "location": "Hillsboro, TX"
+        },
+        {
+          "name": "Seguin Area Chamber of Commerce",
+          "location": "Seguin, TX"
+        },
+        {
+          "name": "Taylor Chamber of Commerce",
+          "location": "Taylor, TX"
+        }
       ]
     },
     {
       "category": "Schools\n& Education",
       "clients": [
-        { "name": "Association of Educational Service Agencies Foundation", "location": "Katy, TX" },
-        { "name": "Coolidge ISD", "location": "Coolidge, TX" },
-        { "name": "Education Service Center Region 5", "location": "Beaumont, TX" },
-        { "name": "Education Service Center Region 12", "location": "Waco, TX" },
-        { "name": "Hill College", "location": "Hillsboro, TX" },
-        { "name": "Hillsboro ISD", "location": "Hillsboro, TX" },
-        { "name": "Hillsboro ISD Education Foundation", "location": "Hillsboro, TX" },
-        { "name": "Jarrell Education Foundation", "location": "Jarrell, TX" },
-        { "name": "La Vega Pirates Education Foundation", "location": "Bellmead, TX" },
-        { "name": "Lutheran High School of San Antonio", "location": "San Antonio, TX" },
-        { "name": "McLennan Community College", "location": "Waco, TX" },
-        { "name": "McGregor ISD Education Foundation", "location": "McGregor, TX" },
-        { "name": "Palacios ISD Educational Foundation", "location": "Palacios, TX" },
-        { "name": "P20 Centroplex Regional Council", "location": "Temple, TX" },
-        { "name": "Summit Christian Academy", "location": "Cedar Park, TX" },
-        { "name": "Texas School for the Deaf", "location": "Austin, TX" },
-        { "name": "Texas School for the Deaf Foundation", "location": "Austin, TX" },
-        { "name": "Woodway Christian School", "location": "Woodway, TX" }
+        {
+          "name": "Association of Educational Service Agencies Foundation",
+          "location": "Katy, TX"
+        },
+        {
+          "name": "Coolidge ISD",
+          "location": "Coolidge, TX"
+        },
+        {
+          "name": "Education Service Center Region 5",
+          "location": "Beaumont, TX"
+        },
+        {
+          "name": "Education Service Center Region 12",
+          "location": "Waco, TX"
+        },
+        {
+          "name": "Hill College",
+          "location": "Hillsboro, TX"
+        },
+        {
+          "name": "Hillsboro ISD",
+          "location": "Hillsboro, TX"
+        },
+        {
+          "name": "Hillsboro ISD Education Foundation",
+          "location": "Hillsboro, TX"
+        },
+        {
+          "name": "Jarrell Education Foundation",
+          "location": "Jarrell, TX"
+        },
+        {
+          "name": "La Vega Pirates Education Foundation",
+          "location": "Bellmead, TX"
+        },
+        {
+          "name": "Lutheran High School of San Antonio",
+          "location": "San Antonio, TX"
+        },
+        {
+          "name": "McLennan Community College",
+          "location": "Waco, TX"
+        },
+        {
+          "name": "McGregor ISD Education Foundation",
+          "location": "McGregor, TX"
+        },
+        {
+          "name": "Palacios ISD Educational Foundation",
+          "location": "Palacios, TX"
+        },
+        {
+          "name": "P20 Centroplex Regional Council",
+          "location": "Temple, TX"
+        },
+        {
+          "name": "Summit Christian Academy",
+          "location": "Cedar Park, TX"
+        },
+        {
+          "name": "Texas School for the Deaf",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Texas School for the Deaf Foundation",
+          "location": "Austin, TX"
+        },
+        {
+          "name": "Woodway Christian School",
+          "location": "Woodway, TX"
+        }
       ]
     }
   ],
