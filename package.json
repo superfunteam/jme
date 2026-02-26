@@ -1,0 +1,7 @@
+{
+  "name": "jme-site",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  }
+}

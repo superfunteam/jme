@@ -1,0 +1,211 @@
+{
+  "hero": {
+    "headline": ["Our mission", "is advancing", "yours."],
+    "cta": "Start a Conversation"
+  },
+  "testimonials": [
+    {
+      "quote": "We know from serving our clients that when dedicated folks come together for the \u2018greater good,\u2019 anything is possible.",
+      "name": "Jeanne Marie Ellis",
+      "title": "Founder, JME Group",
+      "photo": "images/jeanne-marie-ellis.jpg"
+    },
+    {
+      "quote": "JME Group helped us develop a strategic plan that truly works. Their approach is practical, thoughtful, and results-driven.",
+      "name": "Sarah Thompson",
+      "title": "Executive Director, Community Nonprofit",
+      "photo": ""
+    },
+    {
+      "quote": "Their active listening and custom approach made all the difference. We finally have the resources and direction we needed.",
+      "name": "Michael Rivera",
+      "title": "Board Chair, Youth Services Organization",
+      "photo": ""
+    }
+  ],
+  "marquee": [
+    "Increase Credibility",
+    "Define Strategic Direction",
+    "Build Resources",
+    "Develop Strategic Alliances",
+    "Bridge Gaps",
+    "Equip Leaders",
+    "Measure Community Impact"
+  ],
+  "mission": {
+    "lead": "Every day, our clients transform lives through meaningful work in education, community development, healthcare, youth and family services, recreation -- the list goes on and on.",
+    "body": [
+      "Each one of them has a unique mission, but they all have two things in common: they make a difference in their community, and they can prove it. How? Through an intentional, measurable approach to advancing their mission.",
+      "Mission advancement requires the use of best practices, hard work, persistence, and a healthy sense of humor. The decisions your organization makes today will dictate the capacity of your community impact tomorrow."
+    ],
+    "stats": [
+      { "number": 30, "label": "Years Experience" },
+      { "number": 50, "label": "Organizations Served" }
+    ],
+    "ctaQuestions": [
+      "What strategies will drive your mission forward?",
+      "Are you making a difference in your community?",
+      "Can you prove it?"
+    ],
+    "ctaLink": "Let's find out together"
+  },
+  "approach": {
+    "title": "Our Approach",
+    "intro": "Advancement is achieved through purposeful planning and hard work.",
+    "principlesLead": "Opportunity transforms into advancement when:",
+    "principles": [
+      "Your mission is relevant and meaningful",
+      "Your work is valued by others",
+      "Your organization and its leaders are trustworthy",
+      "Your organization and its leaders keep their promises to the community"
+    ],
+    "pillars": [
+      {
+        "title": "Active Listening",
+        "description": "Every client, every situation and every community is unique. Our first objective is to understand the specific needs of your organization within the context of your community."
+      },
+      {
+        "title": "Custom Solutions",
+        "description": "We create solutions that precisely fit your organization by applying proven best practices to your specific needs."
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Strategic Planning",
+      "description": "The community you serve expects progress. Our straightforward strategic planning process delivers a functional road map for your future.",
+      "listHeading": "Deliverables",
+      "deliverables": [
+        "Current strategic plan review and evaluation",
+        "\u201cGaps\u201d analysis",
+        "Strategic plan facilitation",
+        "A relevant, logical plan you will actually use -- with measurable strategies"
+      ]
+    },
+    {
+      "name": "Resource Development",
+      "description": "As a nonprofit organization, stewardship is your highest calling. Resources are scarce and highly competitive. Our proven methods for resource development deliver effective results.",
+      "listHeading": "Deliverables",
+      "deliverables": [
+        "A reliable system for annual and capital giving",
+        "A larger, more committed donor base",
+        "Diversified funding streams",
+        "A broader network of strategic alliances",
+        "An intentional process for board development",
+        "An engaged board that understands the job",
+        "Results-driven committees and task forces",
+        "More volunteers delivering your mission",
+        "Facility/program development"
+      ]
+    },
+    {
+      "name": "Community Relations",
+      "description": "A strong plan for sustainability and growth begins with credibility. Our process delivers improved community relations between your organization and your stakeholders.",
+      "listHeading": "Deliverables",
+      "deliverables": [
+        "Successful methods for sharing your story",
+        "Broader understanding and support for your cause",
+        "An image boost",
+        "Stronger relationships with your stakeholders"
+      ]
+    },
+    {
+      "name": "Community Impact",
+      "description": "Our ultimate goal is to advance your mission. We will collaborate with you to:",
+      "listHeading": "Our Focus",
+      "deliverables": [
+        "Leverage and build on existing strengths",
+        "Identify and seize opportunities",
+        "Develop a plan that is relevant and measurable",
+        "Steward existing resources more effectively",
+        "Cultivate strategic alliances and other resources",
+        "Solve or minimize existing setbacks",
+        "Avoid future obstacles"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "category": "Charitable\nOrganizations",
+      "clients": [
+        { "name": "Agape Pregnancy Resource Center", "location": "Round Rock, TX" },
+        { "name": "Bolivar Point Lighthouse Foundation", "location": "Port Bolivar, TX" },
+        { "name": "Children's Bereavement Center of South Texas", "location": "San Antonio, TX" },
+        { "name": "Explore Austin", "location": "Austin, TX" },
+        { "name": "The Genesis Project", "location": "Seattle, WA" },
+        { "name": "Game Plan for Hope", "location": "Hills, MN" },
+        { "name": "Greater Austin Foundation for the Deaf", "location": "Austin, TX" },
+        { "name": "Greater Austin YMCA", "location": "Austin, TX" },
+        { "name": "Heart of Texas Pregnancy Resource Center", "location": "Austin, TX" },
+        { "name": "HOPE Alliance", "location": "Round Rock, TX" },
+        { "name": "M25", "location": "Leander, TX" },
+        { "name": "Partners in Hope", "location": "Lakeway, TX; Cedar Park, TX" },
+        { "name": "Red Oak Hope", "location": "Austin, TX" },
+        { "name": "Round Rock Area Arts Council", "location": "Round Rock, TX" },
+        { "name": "Round Rock Area Serving Center", "location": "Round Rock, TX" },
+        { "name": "Samaritan Health Ministries", "location": "Leander, TX" },
+        { "name": "Team Luke Hope for Minds", "location": "Lubbock, TX; Austin, TX" },
+        { "name": "Universal Benefits Consortium Cares Foundation", "location": "Southlake, TX" },
+        { "name": "YMCA of Central Texas", "location": "Round Rock, TX" },
+        { "name": "YMCA of Metropolitan Washington", "location": "Washington, DC" },
+        { "name": "YMCA Mid-Majors Group", "location": "Chicago, IL" }
+      ]
+    },
+    {
+      "category": "Municipalities, Chambers\n& Churches",
+      "clients": [
+        { "name": "Austin Christian Fellowship", "location": "Austin, TX" },
+        { "name": "Cedar Park Historic & Cultural Preservation Commission", "location": "Cedar Park, TX" },
+        { "name": "Central Fort Bend Chamber Alliance", "location": "Rosenberg, TX" },
+        { "name": "City of Cedar Park 4B Community Development Corporation", "location": "Cedar Park, TX" },
+        { "name": "City of Taylor / Taylor Parks Foundation", "location": "Taylor, TX" },
+        { "name": "Go Hillsboro", "location": "Hillsboro, TX" },
+        { "name": "Seguin Area Chamber of Commerce", "location": "Seguin, TX" },
+        { "name": "Taylor Chamber of Commerce", "location": "Taylor, TX" }
+      ]
+    },
+    {
+      "category": "Schools\n& Education",
+      "clients": [
+        { "name": "Association of Educational Service Agencies Foundation", "location": "Katy, TX" },
+        { "name": "Coolidge ISD", "location": "Coolidge, TX" },
+        { "name": "Education Service Center Region 5", "location": "Beaumont, TX" },
+        { "name": "Education Service Center Region 12", "location": "Waco, TX" },
+        { "name": "Hill College", "location": "Hillsboro, TX" },
+        { "name": "Hillsboro ISD", "location": "Hillsboro, TX" },
+        { "name": "Hillsboro ISD Education Foundation", "location": "Hillsboro, TX" },
+        { "name": "Jarrell Education Foundation", "location": "Jarrell, TX" },
+        { "name": "La Vega Pirates Education Foundation", "location": "Bellmead, TX" },
+        { "name": "Lutheran High School of San Antonio", "location": "San Antonio, TX" },
+        { "name": "McLennan Community College", "location": "Waco, TX" },
+        { "name": "McGregor ISD Education Foundation", "location": "McGregor, TX" },
+        { "name": "Palacios ISD Educational Foundation", "location": "Palacios, TX" },
+        { "name": "P20 Centroplex Regional Council", "location": "Temple, TX" },
+        { "name": "Summit Christian Academy", "location": "Cedar Park, TX" },
+        { "name": "Texas School for the Deaf", "location": "Austin, TX" },
+        { "name": "Texas School for the Deaf Foundation", "location": "Austin, TX" },
+        { "name": "Woodway Christian School", "location": "Woodway, TX" }
+      ]
+    }
+  ],
+  "about": {
+    "name": "Jeanne Marie Ellis",
+    "role": "Founder & Principal",
+    "lead": "A boutique firm in Austin specializing in advancement strategies for nonprofit organizations. Customized solutions for strategic planning, resource development, and community relations.",
+    "bio": [
+      "Jeanne Marie holds a bachelor's degree in Public Relations from Texas Tech University. Her career spans over three decades and includes strategic planning, nonprofit operations, public relations, marketing, financial development, volunteer development and facility development.",
+      "She co-authored a national study for the YMCA called <em>Doing More Together</em>, which explores the rising trends among municipalities partnering with YMCAs to address specific community needs.",
+      "Jeanne Marie and her husband, Tom, have two grown children. They attend Austin Christian Fellowship, where she serves on the Missions Leadership Team."
+    ],
+    "photo": "images/jeanne-marie-ellis.jpg"
+  },
+  "contact": {
+    "intro": "We'd love to hear from you. Reach out to start a conversation about advancing your mission.",
+    "phone": "512-801-7905",
+    "email": "jme@jmegroup.net",
+    "location": "Austin, TX"
+  },
+  "footer": {
+    "tagline": "Our mission is advancing yours."
+  }
+}

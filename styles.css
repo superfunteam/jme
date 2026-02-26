@@ -695,8 +695,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 
 .approach-pillars {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 72px;
 }
 
 .pillar {
@@ -713,6 +713,14 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   font-variation-settings: 'SOFT' 100, 'WONK' 0;
   letter-spacing: -0.03em;
   display: block;
+  margin-bottom: 12px;
+}
+
+.pillar-icon {
+  display: block;
+  width: clamp(4rem, 8vw, 6.5rem);
+  height: clamp(4rem, 8vw, 6.5rem);
+  color: var(--teal-light);
   margin-bottom: 12px;
 }
 
@@ -892,10 +900,10 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 }
 
 .client-list li {
-  padding: 5px 0;
+  padding: 10px 0;
   font-size: 0.88rem;
-  line-height: 1.35;
-  border-bottom: 1px solid rgba(90, 143, 143, 0.08);
+  line-height: 1.2;
+  border-bottom: 1px solid rgba(90, 143, 143, 0.14);
 }
 
 .client-list li:last-child { border-bottom: none; }
@@ -910,7 +918,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   display: block;
   font-size: 0.78rem;
   color: var(--text-light);
-  margin-top: 1px;
+  margin-top: 3px;
 }
 
 
@@ -979,7 +987,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    ============================================================ */
 .contact-section {
   background: var(--sage);
-  padding-bottom: 0;
+  padding-bottom: 80px;
 }
 
 .contact-content {
