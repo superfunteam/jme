@@ -203,12 +203,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ── Mobile menu toggle ──
+  const navClose = document.getElementById('navClose');
+
+  function closeNav() {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
   navToggle.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
     navToggle.classList.toggle('active');
     navToggle.setAttribute('aria-expanded', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
+
+  if (navClose) {
+    navClose.addEventListener('click', closeNav);
+  }
 
 
   // ── Smooth scroll for anchor links ──

@@ -197,7 +197,10 @@ const html = `<!DOCTYPE html>
     <div class="nav-container">
       <a href="#home" class="nav-logo">JME Group</a>
       <div class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link active">Home</a>
+        <button class="nav-close" id="navClose" aria-label="Close navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+        <a href="#home" class="nav-link active">Our Mission</a>
         <a href="#approach" class="nav-link">Our Approach</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#clients" class="nav-link">Who We Serve</a>

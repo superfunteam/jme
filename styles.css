@@ -232,6 +232,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 
 .nav-cta:hover { background: var(--teal-darker) !important; color: var(--offwhite) !important; }
 
+.nav-close { display: none; }
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -1292,6 +1294,21 @@ a.contact-value:hover { color: var(--teal-dark); }
 
   .nav-toggle { display: flex; }
 
+  .nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid var(--sage-dark);
+    border-radius: 50%;
+    color: var(--heading);
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-close svg { width: 18px; height: 18px; }
+
   .nav-links {
     position: fixed;
     top: 0; right: -100%;
@@ -1299,17 +1316,18 @@ a.contact-value:hover { color: var(--teal-dark); }
     height: 100vh; height: 100dvh;
     background: var(--offwhite);
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
-    padding: 100px 32px 40px;
-    gap: 4px;
+    padding: 100px 32px 32px;
+    gap: 0;
     box-shadow: -4px 0 24px rgba(15, 31, 37, 0.1);
     transition: right 0.35s ease;
     z-index: 999;
   }
 
   .nav-links.open { right: 0; }
-  .nav-link { font-size: 1.05rem; padding: 12px 16px; width: 100%; }
-  .nav-cta { margin-left: 0 !important; margin-top: 12px; text-align: center; }
+  .nav-link { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 300; padding: 12px 16px; width: 100%; }
+  .nav-cta { margin-left: 0 !important; margin-top: auto; text-align: center; width: 100%; font-family: var(--font-body); font-size: 17px; font-weight: 600; padding: 14px 36px !important; border-radius: 8px !important; }
   .nav-container { height: 62px; padding: 0 20px; }
 
   .hero-section {
@@ -1321,7 +1339,8 @@ a.contact-value:hover { color: var(--teal-dark); }
   .hero-headline { text-align: center; }
   .hero-headline h1 { font-size: clamp(2.8rem, 11vw, 3.8rem); }
 
-  h2 { font-size: clamp(2.4rem, 6vw, 3.2rem); }
+  h2 { font-size: clamp(2.8rem, 8vw, 3.6rem); }
+  .approach-title { font-size: clamp(2.8rem, 8vw, 3.6rem); }
 
   .mission-lead { font-size: clamp(1.3rem, 5vw, 1.8rem); }
 
@@ -1332,10 +1351,11 @@ a.contact-value:hover { color: var(--teal-dark); }
   .stats-row { flex-direction: row; gap: 24px; justify-content: flex-start; }
 
   .service-row { grid-template-columns: 50px 1fr; gap: 16px; }
-  .service-number { font-size: 2rem; }
+  .service-number { font-size: 2rem; color: var(--teal); }
 
   .client-categories { grid-template-columns: 1fr; gap: 20px; }
   .client-categories .client-category:first-child { grid-column: auto; }
+  .category-title { font-size: 1.4rem; }
 
   .about-layout {
     grid-template-columns: 1fr;
@@ -1351,6 +1371,8 @@ a.contact-value:hover { color: var(--teal-dark); }
 
   .footer-content { flex-direction: column; text-align: center; gap: 24px; }
   .footer-contact { flex-direction: column; gap: 10px; }
+
+  .btn { font-size: 17px; }
 
   .wave-divider svg, .footer-wave svg { height: 36px; }
   .wave-divider { margin-bottom: -36px; }
