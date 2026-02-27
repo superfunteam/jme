@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.bubble.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -34,6 +36,26 @@
     }
     input:focus, textarea:focus { border-color: #3D7A7A; outline: none; box-shadow: 0 0 0 3px rgba(61,122,122,0.12); }
     textarea { resize: vertical; min-height: 100px; }
+    .quill-editor {
+      background: #fff;
+      border: 2px solid #c8d8d4;
+      border-radius: 10px;
+      min-height: 80px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 18px;
+      color: #1a2e35;
+      transition: border-color 0.2s;
+    }
+    .quill-editor:focus-within {
+      border-color: #3D7A7A;
+      box-shadow: 0 0 0 3px rgba(61,122,122,0.12);
+    }
+    .quill-editor .ql-editor {
+      padding: 16px;
+      min-height: 80px;
+    }
+    .quill-editor, .quill-editor .ql-editor { overflow: visible; }
+    .quill-editor .ql-tooltip { z-index: 10; }
     .btn {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 20px;
@@ -299,6 +321,7 @@
       <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="current-password">
       <button class="btn btn-primary" onclick="login()">Sign In</button>
       <p class="login-error" id="loginError">Incorrect password. Please try again.</p>
+      <a href="#" id="devBypass" style="display:none;margin-top:16px;font-size:16px;color:#5a7a7a" onclick="devLogin();return false">Skip login (localhost)</a>
     </div>
   </div>
 
@@ -368,11 +391,11 @@
         <h2>Mission</h2>
         <p class="section-desc">The heart of your message</p>
         <label>Opening Statement</label>
-        <textarea data-field="mission.lead" rows="3"></textarea>
+        <div class="quill-editor" data-field="mission.lead"></div>
         <label>Body Paragraph 1</label>
-        <textarea data-field="mission.body.0" rows="4"></textarea>
+        <div class="quill-editor" data-field="mission.body.0"></div>
         <label>Body Paragraph 2</label>
-        <textarea data-field="mission.body.1" rows="4"></textarea>
+        <div class="quill-editor" data-field="mission.body.1"></div>
 
         <h3 style="margin-top:28px">Stats</h3>
         <p class="section-desc">The animated counters visitors see</p>
@@ -443,13 +466,13 @@
           </div>
         </div>
         <label>Lead Description</label>
-        <textarea data-field="about.lead" rows="3"></textarea>
+        <div class="quill-editor" data-field="about.lead"></div>
         <label>Bio Paragraph 1</label>
-        <textarea data-field="about.bio.0" rows="4"></textarea>
+        <div class="quill-editor" data-field="about.bio.0"></div>
         <label>Bio Paragraph 2</label>
-        <textarea data-field="about.bio.1" rows="4"></textarea>
+        <div class="quill-editor" data-field="about.bio.1"></div>
         <label>Bio Paragraph 3</label>
-        <textarea data-field="about.bio.2" rows="4"></textarea>
+        <div class="quill-editor" data-field="about.bio.2"></div>
         <label>Photo</label>
         <div class="photo-upload">
           <img id="about-photo-preview" class="photo-preview" src="" alt="" style="display:none">
@@ -466,7 +489,7 @@
         <h2>Contact</h2>
         <p class="section-desc">How people can reach you</p>
         <label>Intro Text</label>
-        <textarea data-field="contact.intro" rows="2"></textarea>
+        <div class="quill-editor" data-field="contact.intro"></div>
         <div class="inline-fields">
           <div>
             <label>Phone</label>
@@ -503,10 +526,41 @@
     // ═══════════ STATE ═══════════
     let content = null;
     let pendingUploads = []; // {path, data} for images to upload on save
+    const quillInstances = new Map();
 
     // ═══════════ HELPERS ═══════════
     function escAttr(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function initQuill(container) {
+      return new Quill(container, {
+        theme: 'bubble',
+        modules: {
+          toolbar: [['bold', 'italic', 'link']]
+        }
+      });
+    }
+
+    // Strip attributes Quill doesn't understand before loading content
+    function loadIntoQuill(quill, html) {
+      if (!html) return;
+      // Simplify <a> tags to bare href (Quill only knows href)
+      html = html.replace(/<a href="([^"]*)"[^>]*>/g, '<a href="$1">');
+      quill.clipboard.dangerouslyPasteHTML(html);
+    }
+
+    function cleanQuillHTML(html) {
+      if (!html || html === '<p><br></p>') return '';
+      // Remove Quill's wrapping <p> tags
+      html = html.replace(/^<p>/, '').replace(/<\/p>$/, '');
+      // Convert paragraph breaks to spaces (single-paragraph fields)
+      html = html.replace(/<\/p><p>/g, ' ');
+      // Clean up empty paragraph markers
+      html = html.replace(/<p><br><\/p>/g, '');
+      // Normalize Quill link output to match build.js format
+      html = html.replace(/<a href="([^"]*)"[^>]*>/g, '<a href="$1" target="_blank">');
+      return html.trim();
     }
 
     function getPath(obj, path) {
@@ -549,6 +603,21 @@
       if (e.key === 'Enter') login();
     });
 
+    // Show localhost bypass link
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      document.getElementById('devBypass').style.display = 'inline-block';
+    }
+
+    async function devLogin() {
+      try {
+        await loadContent();
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('editor').style.display = 'block';
+      } catch (e) {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    }
+
     // ═══════════ LOAD CONTENT ═══════════
     async function loadContent() {
       const res = await fetch('/content.json');
@@ -567,10 +636,18 @@
 
     // ═══════════ POPULATE FORMS ═══════════
     function populateForms() {
-      // Static data-field inputs
-      document.querySelectorAll('[data-field]').forEach(el => {
+      // Static data-field inputs (non-Quill)
+      document.querySelectorAll('input[data-field], textarea[data-field], select[data-field]').forEach(el => {
         const val = getPath(content, el.dataset.field);
         if (val !== undefined) el.value = val;
+      });
+      // Init Quill editors for static data-field divs
+      quillInstances.clear();
+      document.querySelectorAll('.quill-editor[data-field]').forEach(el => {
+        const quill = initQuill(el);
+        const val = getPath(content, el.dataset.field);
+        loadIntoQuill(quill, val);
+        quillInstances.set(el.dataset.field, quill);
       });
       // Dynamic sections
       renderTestimonials();
@@ -585,8 +662,12 @@
 
     // ═══════════ GATHER CONTENT ═══════════
     function gatherContent() {
-      // Static fields
-      document.querySelectorAll('[data-field]').forEach(el => {
+      // Read Quill editors
+      quillInstances.forEach((quill, field) => {
+        setPath(content, field, cleanQuillHTML(quill.root.innerHTML));
+      });
+      // Static fields (inputs, textareas, selects)
+      document.querySelectorAll('input[data-field], textarea[data-field], select[data-field]').forEach(el => {
         const val = el.type === 'number' ? Number(el.value) : el.value;
         setPath(content, el.dataset.field, val);
       });
@@ -604,7 +685,7 @@
         <div class="card">
           <h3>Testimonial ${i + 1}</h3>
           <label>Quote</label>
-          <textarea rows="3" onchange="content.testimonials[${i}].quote=this.value">${escAttr(t.quote)}</textarea>
+          <div class="quill-editor" id="quill-testimonial-${i}"></div>
           <div class="inline-fields">
             <div>
               <label>Name</label>
@@ -625,6 +706,16 @@
           </div>
         </div>`;
       }).join('');
+      // Init Quill editors for testimonial quotes
+      content.testimonials.forEach((t, i) => {
+        const el = document.getElementById('quill-testimonial-' + i);
+        if (!el) return;
+        const quill = initQuill(el);
+        loadIntoQuill(quill, t.quote);
+        quill.on('text-change', () => {
+          content.testimonials[i].quote = cleanQuillHTML(quill.root.innerHTML);
+        });
+      });
     }
 
     function handleTestimonialPhoto(input, index) {
@@ -696,9 +787,19 @@
           <label>Title</label>
           <input value="${escAttr(p.title)}" onchange="content.approach.pillars[${i}].title=this.value">
           <label>Description</label>
-          <textarea rows="3" onchange="content.approach.pillars[${i}].description=this.value">${escAttr(p.description)}</textarea>
+          <div class="quill-editor" id="quill-pillar-${i}"></div>
         </div>
       `).join('');
+      // Init Quill editors for pillar descriptions
+      content.approach.pillars.forEach((p, i) => {
+        const el = document.getElementById('quill-pillar-' + i);
+        if (!el) return;
+        const quill = initQuill(el);
+        loadIntoQuill(quill, p.description);
+        quill.on('text-change', () => {
+          content.approach.pillars[i].description = cleanQuillHTML(quill.root.innerHTML);
+        });
+      });
     }
 
     // ═══════════ SERVICES ═══════════
@@ -721,7 +822,7 @@
             <label>Service Name</label>
             <input value="${escAttr(s.name)}" onchange="content.services[${i}].name=this.value; this.closest('.card').querySelector('h3').textContent=this.value">
             <label>Description</label>
-            <textarea rows="2" onchange="content.services[${i}].description=this.value">${escAttr(s.description)}</textarea>
+            <div class="quill-editor" id="quill-service-${i}"></div>
             <label>List Heading</label>
             <input value="${escAttr(s.listHeading)}" onchange="content.services[${i}].listHeading=this.value">
             <label>Items</label>
@@ -730,6 +831,16 @@
           </div>
         </div>`;
       }).join('');
+      // Init Quill editors for service descriptions
+      content.services.forEach((s, i) => {
+        const el = document.getElementById('quill-service-' + i);
+        if (!el) return;
+        const quill = initQuill(el);
+        loadIntoQuill(quill, s.description);
+        quill.on('text-change', () => {
+          content.services[i].description = cleanQuillHTML(quill.root.innerHTML);
+        });
+      });
     }
 
     function toggleService(i) {

@@ -12,9 +12,11 @@ function esc(s) {
     .replace(/--/g, '&mdash;');
 }
 
-// Like esc() but allows <em> and <a> tags through
+// Like esc() but allows <strong>, <em> and <a> tags through
 function richEsc(s) {
   return esc(s)
+    .replace(/&lt;strong&gt;/g, '<strong>')
+    .replace(/&lt;\/strong&gt;/g, '</strong>')
     .replace(/&lt;em&gt;/g, '<em>')
     .replace(/&lt;\/em&gt;/g, '</em>')
     .replace(/&lt;a href="([^"]*)"(?: target="([^"]*)")?&gt;/g, (_, href, target) =>
@@ -55,7 +57,7 @@ const testimonialSlides = testimonials.map((t, i) => {
     : `<div class="attribution-avatar">${initials(t.name)}</div>`;
   return `                <div class="testimonial${i === 0 ? ' active' : ''}" data-index="${i}">
                   <blockquote>
-                    <p>&ldquo;${esc(t.quote)}&rdquo;</p>
+                    <p>&ldquo;${richEsc(t.quote)}&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
                     ${photoHTML}
@@ -115,7 +117,7 @@ const pillarsHTML = approach.pillars.map((p, i) =>
   `          <div class="pillar fade-in scale-in">
             ${pillarIcons[i] || ''}
             <h3>${esc(p.title)}</h3>
-            <p>${esc(p.description)}</p>
+            <p>${richEsc(p.description)}</p>
           </div>`
 ).join('\n');
 
@@ -135,7 +137,7 @@ const servicesHTML = services.map((s, i) => {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">${esc(s.description)}</p>
+              <p class="service-description">${richEsc(s.description)}</p>
               <div class="service-body">
                 <div class="service-body-inner">
                   <h4>${esc(s.listHeading)}</h4>
@@ -267,11 +269,11 @@ ${marqueeHTML}
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
-        <p class="mission-lead text-reveal">${esc(mission.lead)}</p>
+        <p class="mission-lead text-reveal">${richEsc(mission.lead)}</p>
 
         <div class="mission-body fade-in slide-right">
-          <p>${esc(mission.body[0])}</p>
-          <p>${esc(mission.body[1])}</p>
+          <p>${richEsc(mission.body[0])}</p>
+          <p>${richEsc(mission.body[1])}</p>
         </div>
         <div class="stats-row">
 ${statsHTML}
@@ -295,7 +297,7 @@ ${ctaHTML}
         <div class="approach-header">
           <div class="approach-title-block fade-in slide-right">
             <h2 class="approach-title">${approachTitleHTML}</h2>
-            <p class="approach-intro">${esc(approach.intro)}</p>
+            <p class="approach-intro">${richEsc(approach.intro)}</p>
           </div>
           <div class="approach-principles fade-in slide-left">
             <p class="principles-lead">${esc(approach.principlesLead)}</p>
@@ -358,7 +360,7 @@ ${clientsHTML}
           <div class="about-text-col">
             <h2 class="about-name fade-in">${esc(about.name)}</h2>
             <p class="about-role fade-in">${esc(about.role)}</p>
-            <p class="about-lead fade-in">${esc(about.lead)}</p>
+            <p class="about-lead fade-in">${richEsc(about.lead)}</p>
             <div class="about-body fade-in">
 ${bioHTML}
             </div>
@@ -380,7 +382,7 @@ ${bioHTML}
         <div class="contact-content">
 
           <div class="contact-info fade-in slide-right">
-            <p class="contact-intro">${esc(contact.intro)}</p>
+            <p class="contact-intro">${richEsc(contact.intro)}</p>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div>
