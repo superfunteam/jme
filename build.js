@@ -1,5 +1,14 @@
 const fs = require('fs');
+const crypto = require('crypto');
 const content = JSON.parse(fs.readFileSync('content.json', 'utf8'));
+
+// Cache-busting: hash file contents so browsers fetch new versions when files change
+function fileHash(path) {
+  const data = fs.readFileSync(path);
+  return crypto.createHash('md5').update(data).digest('hex').slice(0, 10);
+}
+const cssHash = fileHash('styles.css');
+const jsHash = fileHash('script.js');
 
 // HTML-encode dangerous chars + typographic niceties
 function esc(s) {
@@ -195,7 +204,7 @@ const html = `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=${cssHash}">
 </head>
 <body>
 
@@ -466,7 +475,7 @@ ${bioHTML}
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=${jsHash}"></script>
 </body>
 </html>
 `;
