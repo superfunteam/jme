@@ -164,10 +164,12 @@ ${clientItems}
 // Build bio paragraphs (allow <em> for book titles, link book PDF)
 const bioHTML = about.bio.map(p => {
   let html = richEsc(p);
-  html = html.replace(
-    '<em>Doing More Together</em>',
-    '<a href="doing-more-together.pdf" target="_blank" rel="noopener"><em>Doing More Together</em></a>'
-  );
+  if (about.bookUrl) {
+    html = html.replace(
+      '<em>Doing More Together</em>',
+      `<a href="${esc(about.bookUrl)}" target="_blank" rel="noopener"><em>Doing More Together</em></a>`
+    );
+  }
   return `              <p>${html}</p>`;
 }).join('\n');
 
