@@ -191,6 +191,17 @@ const html = `<!DOCTYPE html>
   <meta property="og:title" content="JME Group | Nonprofit Advancement Consulting">
   <meta property="og:description" content="Our mission is advancing yours. Boutique consulting for nonprofit organizations.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jmegroup.net">
+  <meta property="og:image" content="https://www.jmegroup.net/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JME Group — Our mission is advancing yours.">
+  <meta property="og:site_name" content="JME Group">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JME Group | Nonprofit Advancement Consulting">
+  <meta name="twitter:description" content="Our mission is advancing yours. Boutique consulting for nonprofit organizations.">
+  <meta name="twitter:image" content="https://www.jmegroup.net/images/og-image.png">
+  <meta name="twitter:image:alt" content="JME Group — Our mission is advancing yours.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235A8F8F'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='serif' font-size='18' font-weight='600' fill='%23F5F9F8'%3EJ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
