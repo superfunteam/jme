@@ -197,16 +197,9 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   height: 72px;
 }
 
-.nav-logo {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--heading);
-  font-variation-settings: 'SOFT' 80, 'WONK' 0;
-  letter-spacing: -0.01em;
-}
-
-.nav-logo:hover { color: var(--heading); }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo-img { height: 28px; width: auto; }
+.nav-logo:hover { opacity: 0.85; }
 
 .nav-links { display: flex; align-items: center; gap: 6px; }
 
@@ -613,6 +606,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   text-align: left;
   margin-top: 32px;
   padding-top: 64px;
+  max-width: 780px;
 }
 
 .cta-divider {
@@ -1142,7 +1136,7 @@ a.contact-value:hover { color: var(--teal-dark); }
    ============================================================ */
 .site-footer { position: relative; background: var(--sage); }
 
-.footer-body { background: var(--dark); padding: 48px 0 28px; }
+.footer-body { position: relative; z-index: 9; background: var(--dark); padding: 48px 0 28px; }
 
 .footer-content {
   display: flex;
@@ -1153,10 +1147,8 @@ a.contact-value:hover { color: var(--teal-dark); }
 }
 
 .footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1.4rem; font-weight: 600;
-  color: var(--offwhite);
-  font-variation-settings: 'SOFT' 80, 'WONK' 0;
+  height: 28px;
+  width: auto;
 }
 
 .footer-tagline {
@@ -1343,6 +1335,7 @@ a.contact-value:hover { color: var(--teal-dark); }
   .approach-title { font-size: clamp(2.8rem, 8vw, 3.6rem); }
 
   .mission-lead { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+  .mission-section::before { background-position: 70% center; }
 
   .stat-number { font-size: clamp(5rem, 14vw, 7rem); line-height: 0.75; }
   .stat-label { margin-top: -4px; }
@@ -1369,7 +1362,8 @@ a.contact-value:hover { color: var(--teal-dark); }
 
   .form-row { grid-template-columns: 1fr; }
 
-  .footer-content { flex-direction: column; text-align: center; gap: 24px; }
+  .footer-content { flex-direction: column; text-align: center; align-items: center; gap: 24px; }
+  .footer-logo { margin: 0 auto; }
   .footer-contact { flex-direction: column; gap: 10px; }
 
   .btn { font-size: 17px; }

@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 53.70818">
-  <path d="M0,3.70818c240,35,480-25,720,5s480-25,720,5v40H0V3.70818Z" style="fill: #e8f0ee;"/>
+<svg id="a" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 393 53.7">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #f5f9f8;
+      }
+
+      .st1 {
+        fill: #0f1f25;
+      }
+
+      .st2 {
+        fill: #e8f0ee;
+      }
+    </style>
+  </defs>
+  <path class="st1" d="M-523.5,140.7c240,35,480-25,720,5s480-25,720,5v40H-523.5v-50Z"/>
+  <path class="st2" d="M-523.5-246.3c240,35,480-25,720,5s480-25,720,5v40H-523.5v-50Z"/>
+  <path class="st0" d="M196.5-69.3c65.5-8.2,131-9.7,196.5-8.2V-24.3H0v-36c65.5,1,131-.8,196.5-9Z"/>
+  <path class="st1" d="M196.5,8.7C131,.5,65.5-1,0,.5v53.2h393V17.7c-65.5,1-131-.8-196.5-9Z"/>
+  <path class="st2" d="M196.5-151.3c-65.5-8.2-131-9.7-196.5-8.2v53.2h393v-36c-65.5,1-131-.8-196.5-9Z"/>
 </svg>

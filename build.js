@@ -161,10 +161,15 @@ ${clientItems}
           </div>`;
 }).join('\n');
 
-// Build bio paragraphs (allow <em> for book titles)
-const bioHTML = about.bio.map(p =>
-  `              <p>${richEsc(p)}</p>`
-).join('\n');
+// Build bio paragraphs (allow <em> for book titles, link book PDF)
+const bioHTML = about.bio.map(p => {
+  let html = richEsc(p);
+  html = html.replace(
+    '<em>Doing More Together</em>',
+    '<a href="doing-more-together.pdf" target="_blank" rel="noopener"><em>Doing More Together</em></a>'
+  );
+  return `              <p>${html}</p>`;
+}).join('\n');
 
 // Phone number for tel: link
 const phoneDigits = contact.phone.replace(/\D/g, '');
@@ -195,7 +200,7 @@ const html = `<!DOCTYPE html>
   <!-- Navigation -->
   <nav class="main-nav" id="mainNav">
     <div class="nav-container">
-      <a href="#home" class="nav-logo">JME Group</a>
+      <a href="#home" class="nav-logo"><img src="images/jme-logo.svg" alt="JME Group" class="nav-logo-img"></a>
       <div class="nav-links" id="navLinks">
         <button class="nav-close" id="navClose" aria-label="Close navigation menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -436,10 +441,11 @@ ${bioHTML}
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-body">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-dark-mobile.png"><img src="images/wave-dark.png" alt=""></picture>
       <div class="container">
         <div class="footer-content">
           <div class="footer-brand">
-            <span class="footer-logo">JME Group</span>
+            <img src="images/jme-logo-reversed.svg" alt="JME Group" class="footer-logo">
             <p class="footer-tagline">${esc(footer.tagline)}</p>
           </div>
           <div class="footer-contact">
