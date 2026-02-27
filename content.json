@@ -5,7 +5,9 @@
       "is advancing",
       "yours."
     ],
-    "cta": "Start a Conversation"
+    "cta": "Start a Conversation",
+    "videoWebm": "images/hero-bg.webm",
+    "videoMp4": "images/hero-bg.mp4"
   },
   "testimonials": [
     {

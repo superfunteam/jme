@@ -15,7 +15,9 @@ exports.handler = async (event) => {
     'images/mission-bg.jpg',
     'images/testimonial-0.jpg',
     'images/testimonial-1.jpg',
-    'images/testimonial-2.jpg'
+    'images/testimonial-2.jpg',
+    'images/hero-bg.webm',
+    'images/hero-bg.mp4'
   ];
 
   if (!allowedPaths.includes(path)) {

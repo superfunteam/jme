@@ -95,11 +95,11 @@ const principlesHTML = approach.principles.map(p =>
 
 // Pillar SVG icons (design elements, not content)
 const pillarIcons = [
-  `<svg class="pillar-icon" aria-hidden="true" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <path d="m84.145 25.043-9.1875-9.1875c-0.14453-0.14844-0.34375-0.23047-0.55078-0.23047h-58c-0.20703 0-0.40625 0.082031-0.55078 0.23047-0.14844 0.14453-0.23047 0.34375-0.23047 0.55078v58c0 0.20703 0.082031 0.40625 0.23047 0.55078l9.1875 9.1875c0.14453 0.14844 0.34375 0.23047 0.55078 0.23047h58c0.20703 0 0.40625-0.082031 0.55078-0.23047 0.14844-0.14453 0.23047-0.34375 0.23047-0.55078v-58c0-0.20703-0.082031-0.40625-0.23047-0.55078zm-21.039 10.508h-26.664l-8.9883-9.1758h35.652zm0 1.5625v25.777h-26.211v-25.777zm-26.211 27.34h26.664l8.9883 9.1719h-35.652zm-19.707-47.266h56.438v55.305l-8.957-9.1406v-37.758c0-0.20703-0.082031-0.40625-0.22656-0.55078-0.14844-0.14844-0.34766-0.23047-0.55469-0.23047h-38.293c-0.20703 0-0.40625 0.082031-0.55078 0.23047-0.14844 0.14453-0.23047 0.34375-0.23047 0.55078v56.113l-7.625-7.625zm65.625 65.625h-56.438v-55.305l8.957 9.1406v37.758c0 0.20703 0.082031 0.40625 0.23047 0.55078 0.14453 0.14844 0.34375 0.23047 0.55078 0.23047h38.293c0.20703 0 0.40625-0.082031 0.55078-0.23047 0.14844-0.14453 0.23047-0.34375 0.23047-0.55078v-56.113l7.625 7.625z" fill="currentColor"/>
+  `<svg class="pillar-icon pillar-icon--listening" aria-hidden="true" viewBox="0 0 68.8 68.7" xmlns="http://www.w3.org/2000/svg">
+              <path d="M68.5,9.4L59.3.2c-.1-.1-.3-.2-.6-.2H.8c-.2,0-.4,0-.6.2C0,.4,0,.6,0,.8v58c0,.2,0,.4.2.6l9.2,9.2c.1.1.3.2.6.2h58c.2,0,.4,0,.6-.2.1-.1.2-.3.2-.6V10c0-.2,0-.4-.2-.6ZM47.5,19.9h-26.7l-9-9.2h35.7v9.2ZM47.5,21.5v25.8h-26.2v-25.8h26.2ZM21.3,48.8h26.7l9,9.2H21.3v-9.2ZM1.6,1.6h56.4v55.3l-9-9.1V10c0-.2,0-.4-.2-.6-.1-.1-.3-.2-.6-.2H10c-.2,0-.4,0-.6.2-.1.1-.2.3-.2.6v56.1l-7.6-7.6V1.6ZM67.2,67.2H10.8V11.9l9,9.1v37.8c0,.2,0,.4.2.6.1.1.3.2.6.2h38.3c.2,0,.4,0,.6-.2.1-.1.2-.3.2-.6V2.7l7.6,7.6v56.9Z" fill="currentColor"/>
             </svg>`,
-  `<svg class="pillar-icon" aria-hidden="true" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <path d="m86.613 35.328-5.5625-9.6523c-0.14062-0.24219-0.39844-0.39062-0.67578-0.39062h-21.57l-5.3438-9.2695c-0.13672-0.24219-0.39453-0.39062-0.67578-0.39062h-33.156c-0.27734 0-0.53516 0.14844-0.67578 0.39062l-5.5664 9.6602c-0.14062 0.24219-0.14062 0.53906 0 0.78125l10.785 18.715-5.3398 9.2656c-0.13672 0.24219-0.13672 0.53906 0 0.78125l16.578 28.766c0.14062 0.24219 0.39844 0.39062 0.67578 0.39062h11.137c0.27734 0 0.53516-0.14844 0.67578-0.39062l10.785-18.715h10.676c0.28125 0 0.53906-0.14848 0.67578-0.39062l16.578-28.766v-0.003906c0.14062-0.24219 0.14062-0.53906 0-0.78125zm-7.5938-8.4805-15.672 27.199h-20.609l4.6797-7.9688h10.883c0.27734 0 0.53906-0.14848 0.67578-0.39062l5.5664-9.6602c0.14062-0.24219 0.14062-0.53906 0-0.78125l-4.8398-8.3984zm-47.473 27.98 9.9609-17.285 4.5547 7.7578-5.3633 9.1289c-0.14453 0.24609-0.14453 0.54687 0 0.79297l5.6719 9.6602c0.14062 0.23828 0.39453 0.38672 0.67188 0.38672h9.8398l-9.6602 16.758zm15.223-27.98 10.184 17.668h-9.5391l-5.2383-8.9258c-0.14062-0.23828-0.39844-0.38281-0.67578-0.38281h-11.133c-0.27734 0-0.53906 0.14844-0.67578 0.39062l-4.6172 8.0117-9.6602-16.762zm-15.949 9.9219h9.3281l-9.957 17.277h-9.3281zm-0.17969 18.055h0.003906l-0.003906 0.003906zm16.852 8.8828-4.7539-8.0977h20.602l4.668 8.0977zm16.301-8.875zm-0.82812-19.195-4.6641 8.0977-10.18-17.668 4.6641-8.0938zm-42.883-18.449h31.352l-4.668 8.0977h-31.352zm0.78125 38.422h9.332l15.676 27.203h-9.332zm48.496 7.3125-4.6602-8.0898 15.676-27.199 4.6602 8.0898z" fill="currentColor"/>
+  `<svg class="pillar-icon" aria-hidden="true" viewBox="0 0 73.2 68.8" xmlns="http://www.w3.org/2000/svg">
+              <path d="M73.2,19.7l-5.6-9.7c-.1-.2-.4-.4-.7-.4h-21.6L40.1.4c-.1-.2-.4-.4-.7-.4H6.2c-.3,0-.5.1-.7.4L0,10.1c-.1.2-.1.5,0,.8l10.8,18.7-5.3,9.3c-.1.2-.1.5,0,.8l16.6,28.8c.1.2.4.4.7.4h11.1c.3,0,.5-.1.7-.4l10.8-18.7h10.7c.3,0,.5-.1.7-.4l16.6-28.8h0c.1-.2.1-.5,0-.8h0ZM65.6,11.2l-15.7,27.2h-20.6l4.7-8h10.9c.3,0,.5-.1.7-.4l5.6-9.7c.1-.2.1-.5,0-.8l-4.8-8.4h19.3ZM18.2,39.2l10-17.3,4.6,7.8-5.4,9.1c-.1.2-.1.5,0,.8l5.7,9.7c.1.2.4.4.7.4h9.8l-9.7,16.8-15.7-27.2ZM33.4,11.2l10.2,17.7h-9.5l-5.2-8.9c-.1-.2-.4-.4-.7-.4h-11.1c-.3,0-.5.1-.7.4l-4.6,8L2,11.2h31.4ZM17.4,21.1h9.3l-10,17.3H7.5l10-17.3ZM17.3,39.2h0,0s0,0,0,0ZM34.1,48.1l-4.8-8.1h20.6l4.7,8.1h-20.5ZM49.6,20l-4.7,8.1-10.2-17.7,4.7-8.1,10.2,17.7ZM6.7,1.6h31.4l-4.7,8.1H2L6.7,1.6ZM7.5,40h9.3l15.7,27.2h-9.3l-15.7-27.2ZM56,47.3l-4.7-8.1,15.7-27.2,4.7,8.1-15.7,27.2Z" fill="currentColor"/>
             </svg>`
 ];
 
@@ -212,6 +212,10 @@ const html = `<!DOCTYPE html>
 
     <!-- ==================== HERO ==================== -->
     <section id="home" class="hero-section">
+      ${hero.videoWebm || hero.videoMp4 ? `<video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        ${hero.videoWebm ? `<source src="${esc(hero.videoWebm)}" type="video/webm">` : ''}
+        ${hero.videoMp4 ? `<source src="${esc(hero.videoMp4)}" type="video/mp4">` : ''}
+      </video>` : ''}
       <div class="container">
         <div class="hero-grid">
           <div class="hero-headline" data-parallax="0.12">
@@ -237,14 +241,9 @@ ${testimonialSlides}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,30 C240,65 480,5 720,35 C960,65 1200,10 1440,40 L1440,80 L0,80 Z" fill="#F5F9F8"/>
-      </svg>
-    </div>
-
     <!-- ==================== MARQUEE ==================== -->
     <div class="marquee-band" aria-label="Areas of focus">
+      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
       <div class="marquee-track" id="marqueeTrack">
 ${marqueeHTML}
       </div>
@@ -253,6 +252,7 @@ ${marqueeHTML}
 
     <!-- ==================== MISSION ==================== -->
     <section id="mission" class="section mission-section">
+      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <p class="mission-lead text-reveal">${esc(mission.lead)}</p>
@@ -275,14 +275,9 @@ ${ctaHTML}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 C360,10 720,70 1080,20 C1260,0 1380,30 1440,25 L1440,80 L0,80 Z" fill="#F5F9F8"/>
-      </svg>
-    </div>
-
     <!-- ==================== OUR APPROACH ==================== -->
     <section id="approach" class="section approach-section">
+      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <div class="approach-header">
@@ -306,14 +301,9 @@ ${pillarsHTML}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,20 C180,55 540,5 720,40 C900,75 1260,15 1440,45 L1440,80 L0,80 Z" fill="#E8F0EE"/>
-      </svg>
-    </div>
-
     <!-- ==================== SERVICES ==================== -->
     <section id="services" class="section services-section">
+      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <h2 class="section-title fade-in">Our Services</h2>
@@ -327,14 +317,9 @@ ${servicesHTML}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,40 C360,70 720,10 1080,50 C1260,65 1380,30 1440,35 L1440,80 L0,80 Z" fill="#F5F9F8"/>
-      </svg>
-    </div>
-
     <!-- ==================== WHO WE SERVE ==================== -->
     <section id="clients" class="section clients-section">
+      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <h2 class="section-title fade-in">Who We Serve</h2>
@@ -349,14 +334,9 @@ ${clientsHTML}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,25 C240,60 600,5 840,40 C1080,75 1320,20 1440,45 L1440,80 L0,80 Z" fill="#E8F0EE"/>
-      </svg>
-    </div>
-
     <!-- ==================== ABOUT ==================== -->
     <section id="about" class="section about-section">
+      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <div class="about-layout">
@@ -377,14 +357,9 @@ ${bioHTML}
 
     </section>
 
-    <div class="wave-divider" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,45 C300,15 600,65 900,25 C1200,0 1380,50 1440,35 L1440,80 L0,80 Z" fill="#F5F9F8"/>
-      </svg>
-    </div>
-
     <!-- ==================== CONTACT ==================== -->
     <section id="contact" class="section contact-section">
+      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
       <div class="container">
 
         <h2 class="section-title fade-in">Get in Touch</h2>
@@ -451,11 +426,6 @@ ${bioHTML}
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,30 C300,60 600,10 900,45 C1200,75 1380,20 1440,40 L1440,80 L0,80 Z" fill="#0F1F25"/>
-      </svg>
-    </div>
     <div class="footer-body">
       <div class="container">
         <div class="footer-content">

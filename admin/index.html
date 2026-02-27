@@ -335,6 +335,17 @@
         <input data-field="hero.headline.2">
         <label>Button Text</label>
         <input data-field="hero.cta">
+
+        <h3 style="margin-top:28px">Background Video</h3>
+        <p class="section-desc">Loops behind the headline at low opacity</p>
+        <div class="photo-upload">
+          <video id="hero-video-preview" style="width:120px;height:68px;object-fit:cover;border-radius:8px;border:3px solid #E8F0EE;display:none" muted loop playsinline></video>
+          <div id="hero-video-placeholder" class="photo-placeholder" style="width:120px;height:68px;border-radius:8px;font-size:13px">No preview</div>
+          <div>
+            <input type="file" accept="video/*" onchange="handleVideoUpload(this)">
+            <p style="font-size:14px;color:#5a7a7a;margin-top:4px">Max 10 MB. Will be converted to teal monochrome.</p>
+          </div>
+        </div>
       </div>
 
       <!-- ── 2. TESTIMONIALS ── -->
@@ -569,6 +580,7 @@
       renderServices();
       renderClients();
       renderAboutPhoto();
+      renderHeroVideo();
     }
 
     // ═══════════ GATHER CONTENT ═══════════
@@ -798,6 +810,17 @@
       }
     }
 
+    function renderHeroVideo() {
+      const src = content.hero.videoWebm || content.hero.videoMp4;
+      if (src) {
+        const vid = document.getElementById('hero-video-preview');
+        vid.src = '/' + src;
+        vid.style.display = 'block';
+        vid.play().catch(() => {});
+        document.getElementById('hero-video-placeholder').style.display = 'none';
+      }
+    }
+
     function handleImageUpload(input, previewPrefix, imagePath) {
       const file = input.files[0];
       if (!file) return;
@@ -817,6 +840,36 @@
         img.style.display = 'block';
         const placeholder = document.getElementById(previewPrefix + '-placeholder');
         if (placeholder) placeholder.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ═══════════ VIDEO UPLOAD ═══════════
+    function handleVideoUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      if (file.size > 10 * 1024 * 1024) {
+        alert('Video must be under 10 MB');
+        input.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result.split(',')[1];
+        const ext = file.name.split('.').pop().toLowerCase();
+        const path = 'images/hero-bg.' + ext;
+        const mime = ext === 'webm' ? 'video/webm' : 'video/mp4';
+        pendingUploads = pendingUploads.filter(u => !u.path.startsWith('images/hero-bg.'));
+        pendingUploads.push({ path, data: base64 });
+        // Update content paths
+        if (ext === 'webm') content.hero.videoWebm = path;
+        else content.hero.videoMp4 = path;
+        // Show preview
+        const vid = document.getElementById('hero-video-preview');
+        vid.src = e.target.result;
+        vid.style.display = 'block';
+        vid.play();
+        document.getElementById('hero-video-placeholder').style.display = 'none';
       };
       reader.readAsDataURL(file);
     }

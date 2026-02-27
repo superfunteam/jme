@@ -32,7 +32,7 @@
   --container-narrow: 780px;
 
   /* ── Effects ── */
-  --radius:    10px;
+  --radius:    20px;
   --radius-sm: 6px;
   --shadow:       0 2px 24px rgba(15, 31, 37, 0.05);
   --shadow-hover: 0 12px 40px rgba(15, 31, 37, 0.08);
@@ -110,7 +110,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   font-size: 15px;
   letter-spacing: 0.04em;
   padding: 14px 36px;
-  border-radius: var(--radius);
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: all var(--transition);
@@ -256,6 +256,9 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    HERO — Dramatic Type
    ============================================================ */
 .hero-section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 15% 20%, rgba(90, 143, 143, 0.06) 0%, transparent 55%),
     radial-gradient(ellipse at 85% 75%, rgba(143, 181, 181, 0.05) 0%, transparent 55%),
@@ -265,6 +268,17 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   min-height: 90vh;
   display: flex;
   align-items: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -299,8 +313,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 
 .testimonial-card {
   background: var(--white);
-  border-radius: var(--radius);
-  padding: 36px 32px 28px;
+  border-radius: 20px;
+  padding: 36px 32px 32px;
   box-shadow: 0 4px 32px rgba(15, 31, 37, 0.08);
   border: 1px solid rgba(194, 217, 217, 0.3);
 }
@@ -426,10 +440,22 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    MARQUEE — Scroll-Linked
    ============================================================ */
 .marquee-band {
-  overflow: hidden;
+  position: relative;
+  z-index: 2;
   background: var(--sage);
   padding: 28px 0 56px;
   margin-bottom: 28px;
+}
+
+.section-wave {
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2rem;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .marquee-track {
@@ -466,6 +492,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   background: var(--offwhite);
   padding-bottom: calc(var(--section-pad) + 50px);
   position: relative;
+  z-index: 3;
 }
 
 .mission-section::before {
@@ -492,7 +519,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   z-index: 0;
 }
 
-.mission-section > * {
+.mission-section > *:not(.section-wave) {
   position: relative;
   z-index: 1;
 }
@@ -634,6 +661,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    APPROACH — Split Layout
    ============================================================ */
 .approach-section {
+  position: relative;
+  z-index: 4;
   background: var(--sage);
   padding-bottom: calc(var(--section-pad) + 50px);
 }
@@ -718,10 +747,15 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 
 .pillar-icon {
   display: block;
-  width: clamp(4rem, 8vw, 6.5rem);
-  height: clamp(4rem, 8vw, 6.5rem);
+  width: clamp(3.2rem, 6.5vw, 5rem);
+  height: clamp(3.2rem, 6.5vw, 5rem);
   color: var(--teal-light);
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.pillar-icon--listening {
+  width: clamp(2.8rem, 5.8vw, 4.4rem);
+  height: clamp(2.8rem, 5.8vw, 4.4rem);
 }
 
 .pillar h3 {
@@ -742,6 +776,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    SERVICES — Numbered Rows
    ============================================================ */
 .services-section {
+  position: relative;
+  z-index: 5;
   background: var(--offwhite);
   padding-bottom: calc(var(--section-pad) + 50px);
 }
@@ -867,6 +903,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    CLIENTS — Cool Gradient
    ============================================================ */
 .clients-section {
+  position: relative;
+  z-index: 6;
   background: linear-gradient(180deg, #E8F0EE 0%, #DDE9E6 35%, #DDE9E6 65%, #E8F0EE 100%);
   padding-bottom: calc(var(--section-pad) + 50px);
 }
@@ -926,6 +964,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    ABOUT — Editorial Bio
    ============================================================ */
 .about-section {
+  position: relative;
+  z-index: 7;
   background: var(--offwhite);
   padding-bottom: calc(var(--section-pad) + 50px);
 }
@@ -986,6 +1026,8 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
    CONTACT
    ============================================================ */
 .contact-section {
+  position: relative;
+  z-index: 8;
   background: var(--sage);
   padding-bottom: 80px;
 }
