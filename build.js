@@ -205,9 +205,12 @@ const html = `<!DOCTYPE html>
   <!-- Navigation -->
   <nav class="main-nav" id="mainNav">
     <div class="nav-container">
-      <a href="#home" class="nav-logo">JME Group</a>
+      <a href="#home" class="nav-logo"><img src="images/jme-logo.svg" alt="JME Group" class="nav-logo-img"></a>
       <div class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link active">Home</a>
+        <button class="nav-close" id="navClose" aria-label="Close navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+        <a href="#home" class="nav-link active">Our Mission</a>
         <a href="#approach" class="nav-link">Our Approach</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#clients" class="nav-link">Who We Serve</a>
@@ -443,10 +446,11 @@ ${bioHTML}
   <!-- Footer -->
   <footer class="site-footer" data-adlib-section="footer">
     <div class="footer-body">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-dark-mobile.png"><img src="images/wave-dark.png" alt=""></picture>
       <div class="container">
         <div class="footer-content">
           <div class="footer-brand">
-            <span class="footer-logo">JME Group</span>
+            <picture><source media="(max-width: 680px)" srcset="images/jme-logo-reversed-stacked.svg"><img src="images/jme-logo-reversed.svg" alt="JME Group" class="footer-logo"></picture>
             <p class="footer-tagline" data-adlib-cms="footer.tagline">${esc(footer.tagline)}</p>
           </div>
           <div class="footer-contact">

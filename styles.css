@@ -1363,7 +1363,7 @@ a.contact-value:hover { color: var(--teal-dark); }
   .form-row { grid-template-columns: 1fr; }
 
   .footer-content { flex-direction: column; text-align: center; align-items: center; gap: 24px; }
-  .footer-logo { margin: 0 auto; }
+  .footer-logo { margin: 0 auto; height: 48px; }
   .footer-contact { flex-direction: column; gap: 10px; }
 
   .btn { font-size: 17px; }
