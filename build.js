@@ -12,11 +12,14 @@ function esc(s) {
     .replace(/--/g, '&mdash;');
 }
 
-// Like esc() but allows <em> tags through
+// Like esc() but allows <em> and <a> tags through
 function richEsc(s) {
   return esc(s)
     .replace(/&lt;em&gt;/g, '<em>')
-    .replace(/&lt;\/em&gt;/g, '</em>');
+    .replace(/&lt;\/em&gt;/g, '</em>')
+    .replace(/&lt;a href="([^"]*)"(?: target="([^"]*)")?&gt;/g, (_, href, target) =>
+      `<a href="${href}"${target ? ` target="${target}" rel="noopener"` : ''}>`)
+    .replace(/&lt;\/a&gt;/g, '</a>');
 }
 
 // Generate initials from a name (first + last)
@@ -161,17 +164,10 @@ ${clientItems}
           </div>`;
 }).join('\n');
 
-// Build bio paragraphs (allow <em> for book titles, link book PDF)
-const bioHTML = about.bio.map(p => {
-  let html = richEsc(p);
-  if (about.bookUrl) {
-    html = html.replace(
-      '<em>Doing More Together</em>',
-      `<a href="${esc(about.bookUrl)}" target="_blank" rel="noopener"><em>Doing More Together</em></a>`
-    );
-  }
-  return `              <p>${html}</p>`;
-}).join('\n');
+// Build bio paragraphs (allow <em> and <a> tags)
+const bioHTML = about.bio.map(p =>
+  `              <p>${richEsc(p)}</p>`
+).join('\n');
 
 // Phone number for tel: link
 const phoneDigits = contact.phone.replace(/\D/g, '');
