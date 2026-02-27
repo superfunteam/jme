@@ -67,6 +67,31 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollY = window.scrollY;
   }
 
+  // ── Marquee touch drag ──
+  let marqueeTouchStartX = 0;
+  let marqueeTouchDragging = false;
+
+  if (marqueeTrack) {
+    const band = marqueeTrack.closest('.marquee-band');
+    if (band) {
+      band.addEventListener('touchstart', (e) => {
+        marqueeTouchStartX = e.touches[0].clientX;
+        marqueeTouchDragging = true;
+      }, { passive: true });
+
+      band.addEventListener('touchmove', (e) => {
+        if (!marqueeTouchDragging) return;
+        const dx = e.touches[0].clientX - marqueeTouchStartX;
+        marqueeTouchStartX = e.touches[0].clientX;
+        marqueeBasePos -= dx;
+      }, { passive: true });
+
+      band.addEventListener('touchend', () => {
+        marqueeTouchDragging = false;
+      }, { passive: true });
+    }
+  }
+
 
   // ── Text reveal (word-by-word opacity) ──
   function initTextReveal() {

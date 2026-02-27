@@ -65,14 +65,18 @@ const testimonialSlides = testimonials.map((t, i) => {
 }).join('\n');
 
 // Build mission CTA questions
-const ctaHTML = mission.ctaQuestions.map((q, i) => {
-  if (i === mission.ctaQuestions.length - 1) {
-    // Last question gets word-by-word reveal spans
-    const words = q.split(' ').map(w => `<span class="prove-word">${esc(w)}</span>`).join(' ');
-    return `          <p class="cta-question cta-prove"><em>${words}</em></p>`;
-  }
-  return `          <p class="cta-question">${esc(q)}</p>`;
-}).join('\n');
+const ctaHTML = (() => {
+  const qs = mission.ctaQuestions;
+  const last = qs.length - 1;
+  const lines = [];
+  // Combine all non-last questions into one flowing paragraph
+  const combined = qs.slice(0, last).map(q => esc(q)).join(' ');
+  lines.push(`          <p class="cta-question">${combined}</p>`);
+  // Last question gets word-by-word reveal spans
+  const words = qs[last].split(' ').map(w => `<span class="prove-word">${esc(w)}</span>`).join(' ');
+  lines.push(`          <p class="cta-question cta-prove"><em>${words}</em></p>`);
+  return lines.join('\n');
+})();
 
 // Build stats
 const statsHTML = mission.stats.map(s =>
@@ -243,7 +247,7 @@ ${testimonialSlides}
 
     <!-- ==================== MARQUEE ==================== -->
     <div class="marquee-band" aria-label="Areas of focus">
-      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="marquee-overflow">
         <div class="marquee-track" id="marqueeTrack">
 ${marqueeHTML}
@@ -254,7 +258,7 @@ ${marqueeHTML}
 
     <!-- ==================== MISSION ==================== -->
     <section id="mission" class="section mission-section">
-      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
         <p class="mission-lead text-reveal">${esc(mission.lead)}</p>
@@ -279,7 +283,7 @@ ${ctaHTML}
 
     <!-- ==================== OUR APPROACH ==================== -->
     <section id="approach" class="section approach-section">
-      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
         <div class="approach-header">
@@ -305,7 +309,7 @@ ${pillarsHTML}
 
     <!-- ==================== SERVICES ==================== -->
     <section id="services" class="section services-section">
-      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
         <h2 class="section-title fade-in">Our Services</h2>
@@ -321,7 +325,7 @@ ${servicesHTML}
 
     <!-- ==================== WHO WE SERVE ==================== -->
     <section id="clients" class="section clients-section">
-      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
         <h2 class="section-title fade-in">Who We Serve</h2>
@@ -338,7 +342,7 @@ ${clientsHTML}
 
     <!-- ==================== ABOUT ==================== -->
     <section id="about" class="section about-section">
-      <img src="images/wave-off-white.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
         <div class="about-layout">
@@ -361,7 +365,7 @@ ${bioHTML}
 
     <!-- ==================== CONTACT ==================== -->
     <section id="contact" class="section contact-section">
-      <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
+      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
         <h2 class="section-title fade-in">Get in Touch</h2>
