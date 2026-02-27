@@ -43,18 +43,18 @@
   <main>
 
     <!-- ==================== HERO ==================== -->
-    <section id="home" class="hero-section">
+    <section id="home" class="hero-section" data-adlib-section="hero">
       <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-        <source src="images/hero-bg.webm" type="video/webm">
-        <source src="images/hero-bg.mp4" type="video/mp4">
+        <source data-adlib-cms="hero.videoWebm" data-adlib-type="video" src="images/hero-bg.webm" type="video/webm">
+        <source data-adlib-cms="hero.videoMp4" data-adlib-type="video" src="images/hero-bg.mp4" type="video/mp4">
       </video>
       <div class="container">
         <div class="hero-grid">
           <div class="hero-headline" data-parallax="0.12">
             <h1>
-              <span class="hero-line">Our mission</span>
-              <span class="hero-line">is advancing</span>
-              <span class="hero-line hero-em"><em>yours.</em></span>
+              <span class="hero-line" data-adlib-cms="hero.headline.0">Our mission</span>
+              <span class="hero-line" data-adlib-cms="hero.headline.1">is advancing</span>
+              <span class="hero-line hero-em" data-adlib-cms="hero.headline.2"><em>yours.</em></span>
             </h1>
           </div>
           <div class="hero-sidebar fade-in slide-left">
@@ -65,44 +65,44 @@
                 <button class="testimonial-dot" data-slide="2" aria-label="Testimonial 3"></button>
               </div>
               <div class="testimonial-carousel" id="testimonialCarousel">
-                <div class="testimonial active" data-index="0">
+                <div class="testimonial active" data-index="0" data-adlib-each="testimonials" data-adlib-index="0">
                   <blockquote>
-                    <p>&ldquo;We know from serving our clients that when dedicated folks come together for the ‘greater good,’ anything is possible.&rdquo;</p>
+                    <p data-adlib-cms="testimonials.0.quote">&ldquo;We know from serving our clients that when dedicated folks come together for the ‘greater good,’ anything is possible.&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
-                    <img src="images/jeanne-marie-ellis.jpg" alt="Jeanne Marie Ellis" class="attribution-photo" loading="eager">
+                    <img data-adlib-cms="testimonials.0.photo" data-adlib-type="image" src="images/jeanne-marie-ellis.jpg" alt="Jeanne Marie Ellis" class="attribution-photo" loading="eager">
                     <div class="attribution-text">
-                      <strong>Jeanne Marie Ellis</strong>
-                      <span>Founder, JME Group</span>
+                      <strong data-adlib-cms="testimonials.0.name">Jeanne Marie Ellis</strong>
+                      <span data-adlib-cms="testimonials.0.title">Founder, JME Group</span>
                     </div>
                   </div>
                 </div>
-                <div class="testimonial" data-index="1">
+                <div class="testimonial" data-index="1" data-adlib-each="testimonials" data-adlib-index="1">
                   <blockquote>
-                    <p>&ldquo;JME Group helped us develop a strategic plan that truly works. Their approach is practical, thoughtful, and results-driven.&rdquo;</p>
+                    <p data-adlib-cms="testimonials.1.quote">&ldquo;JME Group helped us develop a strategic plan that truly works. Their approach is practical, thoughtful, and results-driven.&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
                     <div class="attribution-avatar">ST</div>
                     <div class="attribution-text">
-                      <strong>Sarah Thompson</strong>
-                      <span>Executive Director, Community Nonprofit</span>
+                      <strong data-adlib-cms="testimonials.1.name">Sarah Thompson</strong>
+                      <span data-adlib-cms="testimonials.1.title">Executive Director, Community Nonprofit</span>
                     </div>
                   </div>
                 </div>
-                <div class="testimonial" data-index="2">
+                <div class="testimonial" data-index="2" data-adlib-each="testimonials" data-adlib-index="2">
                   <blockquote>
-                    <p>&ldquo;Their active listening and custom approach made all the difference. We finally have the resources and direction we needed.&rdquo;</p>
+                    <p data-adlib-cms="testimonials.2.quote">&ldquo;Their active listening and custom approach made all the difference. We finally have the resources and direction we needed.&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
                     <div class="attribution-avatar">MR</div>
                     <div class="attribution-text">
-                      <strong>Michael Rivera</strong>
-                      <span>Board Chair, Youth Services Organization</span>
+                      <strong data-adlib-cms="testimonials.2.name">Michael Rivera</strong>
+                      <span data-adlib-cms="testimonials.2.title">Board Chair, Youth Services Organization</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <a href="#contact" class="btn btn-primary hero-btn">Start a Conversation</a>
+              <a href="#contact" class="btn btn-primary hero-btn" data-adlib-cms="hero.cta">Start a Conversation</a>
             </div>
           </div>
         </div>
@@ -111,23 +111,23 @@
     </section>
 
     <!-- ==================== MARQUEE ==================== -->
-    <div class="marquee-band" aria-label="Areas of focus">
+    <div class="marquee-band" aria-label="Areas of focus" data-adlib-section="marquee">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="marquee-overflow">
         <div class="marquee-track" id="marqueeTrack">
-        <span class="marquee-item">Increase Credibility</span>
+        <span class="marquee-item" data-adlib-cms="marquee.0">Increase Credibility</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Define Strategic Direction</span>
+        <span class="marquee-item" data-adlib-cms="marquee.1">Define Strategic Direction</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Build Resources</span>
+        <span class="marquee-item" data-adlib-cms="marquee.2">Build Resources</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Develop Strategic Alliances</span>
+        <span class="marquee-item" data-adlib-cms="marquee.3">Develop Strategic Alliances</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Bridge Gaps</span>
+        <span class="marquee-item" data-adlib-cms="marquee.4">Bridge Gaps</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Equip Leaders</span>
+        <span class="marquee-item" data-adlib-cms="marquee.5">Equip Leaders</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
-        <span class="marquee-item">Measure Community Impact</span>
+        <span class="marquee-item" data-adlib-cms="marquee.6">Measure Community Impact</span>
         <span class="marquee-sep" aria-hidden="true">&middot;</span>
         <!-- duplicate for seamless loop -->
         <span class="marquee-item">Increase Credibility</span>
@@ -150,32 +150,32 @@
 
 
     <!-- ==================== MISSION ==================== -->
-    <section id="mission" class="section mission-section">
+    <section id="mission" class="section mission-section" data-adlib-section="mission">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
-        <p class="mission-lead text-reveal">Every day, our clients transform lives through meaningful work in education, community development, healthcare, youth and family services, recreation &mdash; the list goes on and on.</p>
+        <p class="mission-lead text-reveal" data-adlib-cms="mission.lead">Every day, our clients transform lives through meaningful work in education, community development, healthcare, youth and family services, recreation &mdash; the list goes on and on.</p>
 
         <div class="mission-body fade-in slide-right">
-          <p>Each one of them has a unique mission, but they all have two things in common: they make a difference in their community, and they can prove it. How? Through an intentional, measurable approach to advancing their mission.</p>
-          <p>Mission advancement requires the use of best practices, hard work, persistence, and a healthy sense of humor. The decisions your organization makes today will dictate the capacity of your community impact tomorrow.</p>
+          <p data-adlib-cms="mission.body.0">Each one of them has a unique mission, but they all have two things in common: they make a difference in their community, and they can prove it. How? Through an intentional, measurable approach to advancing their mission.</p>
+          <p data-adlib-cms="mission.body.1">Mission advancement requires the use of best practices, hard work, persistence, and a healthy sense of humor. The decisions your organization makes today will dictate the capacity of your community impact tomorrow.</p>
         </div>
         <div class="stats-row">
-          <div class="stat fade-in" data-counter>
-            <div class="stat-top"><span class="stat-number" data-target="30">0</span><span class="stat-plus">+</span></div>
-            <span class="stat-label">Years Experience</span>
+          <div class="stat fade-in" data-counter data-adlib-each="mission.stats" data-adlib-index="0">
+            <div class="stat-top"><span class="stat-number" data-adlib-cms="mission.stats.0.number" data-adlib-type="number" data-target="30">0</span><span class="stat-plus">+</span></div>
+            <span class="stat-label" data-adlib-cms="mission.stats.0.label">Years Experience</span>
           </div>
-          <div class="stat fade-in" data-counter>
-            <div class="stat-top"><span class="stat-number" data-target="50">0</span><span class="stat-plus">+</span></div>
-            <span class="stat-label">Organizations Served</span>
+          <div class="stat fade-in" data-counter data-adlib-each="mission.stats" data-adlib-index="1">
+            <div class="stat-top"><span class="stat-number" data-adlib-cms="mission.stats.1.number" data-adlib-type="number" data-target="50">0</span><span class="stat-plus">+</span></div>
+            <span class="stat-label" data-adlib-cms="mission.stats.1.label">Organizations Served</span>
           </div>
         </div>
 
         <div class="mission-cta fade-in">
           <div class="cta-divider" aria-hidden="true"></div>
-          <p class="cta-question">What strategies will drive your mission forward? Are you making a difference in your community?</p>
-          <p class="cta-question cta-prove"><em><span class="prove-word">Can</span> <span class="prove-word">you</span> <span class="prove-word">prove</span> <span class="prove-word">it?</span></em></p>
-          <a href="#contact" class="cta-link">Let&rsquo;s find out together &rarr;</a>
+          <p class="cta-question"><span data-adlib-cms="mission.ctaQuestions.0">What strategies will drive your mission forward?</span> <span data-adlib-cms="mission.ctaQuestions.1">Are you making a difference in your community?</span></p>
+          <p class="cta-question cta-prove" data-adlib-cms="mission.ctaQuestions.2"><em><span class="prove-word">Can</span> <span class="prove-word">you</span> <span class="prove-word">prove</span> <span class="prove-word">it?</span></em></p>
+          <a href="#contact" class="cta-link" data-adlib-cms="mission.ctaLink">Let&rsquo;s find out together &rarr;</a>
         </div>
 
       </div>
@@ -183,40 +183,40 @@
     </section>
 
     <!-- ==================== OUR APPROACH ==================== -->
-    <section id="approach" class="section approach-section">
+    <section id="approach" class="section approach-section" data-adlib-section="approach">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
         <div class="approach-header">
           <div class="approach-title-block fade-in slide-right">
-            <h2 class="approach-title">Our<br>Approach</h2>
-            <p class="approach-intro">Advancement is achieved through purposeful planning and hard work.</p>
+            <h2 class="approach-title" data-adlib-cms="approach.title">Our<br>Approach</h2>
+            <p class="approach-intro" data-adlib-cms="approach.intro">Advancement is achieved through purposeful planning and hard work.</p>
           </div>
           <div class="approach-principles fade-in slide-left">
-            <p class="principles-lead">Opportunity transforms into advancement when:</p>
+            <p class="principles-lead" data-adlib-cms="approach.principlesLead">Opportunity transforms into advancement when:</p>
             <ul>
-              <li>Your mission is relevant and meaningful</li>
-              <li>Your work is valued by others</li>
-              <li>Your organization and its leaders are trustworthy</li>
-              <li>Your organization and its leaders keep their promises to the community</li>
+              <li data-adlib-cms="approach.principles.0">Your mission is relevant and meaningful</li>
+              <li data-adlib-cms="approach.principles.1">Your work is valued by others</li>
+              <li data-adlib-cms="approach.principles.2">Your organization and its leaders are trustworthy</li>
+              <li data-adlib-cms="approach.principles.3">Your organization and its leaders keep their promises to the community</li>
             </ul>
           </div>
         </div>
 
         <div class="approach-pillars">
-          <div class="pillar fade-in scale-in">
+          <div class="pillar fade-in scale-in" data-adlib-each="approach.pillars" data-adlib-index="0">
             <svg class="pillar-icon pillar-icon--listening" aria-hidden="true" viewBox="0 0 68.8 68.7" xmlns="http://www.w3.org/2000/svg">
               <path d="M68.5,9.4L59.3.2c-.1-.1-.3-.2-.6-.2H.8c-.2,0-.4,0-.6.2C0,.4,0,.6,0,.8v58c0,.2,0,.4.2.6l9.2,9.2c.1.1.3.2.6.2h58c.2,0,.4,0,.6-.2.1-.1.2-.3.2-.6V10c0-.2,0-.4-.2-.6ZM47.5,19.9h-26.7l-9-9.2h35.7v9.2ZM47.5,21.5v25.8h-26.2v-25.8h26.2ZM21.3,48.8h26.7l9,9.2H21.3v-9.2ZM1.6,1.6h56.4v55.3l-9-9.1V10c0-.2,0-.4-.2-.6-.1-.1-.3-.2-.6-.2H10c-.2,0-.4,0-.6.2-.1.1-.2.3-.2.6v56.1l-7.6-7.6V1.6ZM67.2,67.2H10.8V11.9l9,9.1v37.8c0,.2,0,.4.2.6.1.1.3.2.6.2h38.3c.2,0,.4,0,.6-.2.1-.1.2-.3.2-.6V2.7l7.6,7.6v56.9Z" fill="currentColor"/>
             </svg>
-            <h3>Active Listening</h3>
-            <p>Every client, every situation and every community is unique. Our first objective is to understand the specific needs of your organization within the context of your community.</p>
+            <h3 data-adlib-cms="approach.pillars.0.title">Active Listening</h3>
+            <p data-adlib-cms="approach.pillars.0.description">Every client, every situation and every community is unique. Our first objective is to understand the specific needs of your organization within the context of your community.</p>
           </div>
-          <div class="pillar fade-in scale-in">
+          <div class="pillar fade-in scale-in" data-adlib-each="approach.pillars" data-adlib-index="1">
             <svg class="pillar-icon" aria-hidden="true" viewBox="0 0 73.2 68.8" xmlns="http://www.w3.org/2000/svg">
               <path d="M73.2,19.7l-5.6-9.7c-.1-.2-.4-.4-.7-.4h-21.6L40.1.4c-.1-.2-.4-.4-.7-.4H6.2c-.3,0-.5.1-.7.4L0,10.1c-.1.2-.1.5,0,.8l10.8,18.7-5.3,9.3c-.1.2-.1.5,0,.8l16.6,28.8c.1.2.4.4.7.4h11.1c.3,0,.5-.1.7-.4l10.8-18.7h10.7c.3,0,.5-.1.7-.4l16.6-28.8h0c.1-.2.1-.5,0-.8h0ZM65.6,11.2l-15.7,27.2h-20.6l4.7-8h10.9c.3,0,.5-.1.7-.4l5.6-9.7c.1-.2.1-.5,0-.8l-4.8-8.4h19.3ZM18.2,39.2l10-17.3,4.6,7.8-5.4,9.1c-.1.2-.1.5,0,.8l5.7,9.7c.1.2.4.4.7.4h9.8l-9.7,16.8-15.7-27.2ZM33.4,11.2l10.2,17.7h-9.5l-5.2-8.9c-.1-.2-.4-.4-.7-.4h-11.1c-.3,0-.5.1-.7.4l-4.6,8L2,11.2h31.4ZM17.4,21.1h9.3l-10,17.3H7.5l10-17.3ZM17.3,39.2h0,0s0,0,0,0ZM34.1,48.1l-4.8-8.1h20.6l4.7,8.1h-20.5ZM49.6,20l-4.7,8.1-10.2-17.7,4.7-8.1,10.2,17.7ZM6.7,1.6h31.4l-4.7,8.1H2L6.7,1.6ZM7.5,40h9.3l15.7,27.2h-9.3l-15.7-27.2ZM56,47.3l-4.7-8.1,15.7-27.2,4.7,8.1-15.7,27.2Z" fill="currentColor"/>
             </svg>
-            <h3>Custom Solutions</h3>
-            <p>We create solutions that precisely fit your organization by applying proven best practices to your specific needs.</p>
+            <h3 data-adlib-cms="approach.pillars.1.title">Custom Solutions</h3>
+            <p data-adlib-cms="approach.pillars.1.description">We create solutions that precisely fit your organization by applying proven best practices to your specific needs.</p>
           </div>
         </div>
 
@@ -225,7 +225,7 @@
     </section>
 
     <!-- ==================== SERVICES ==================== -->
-    <section id="services" class="section services-section">
+    <section id="services" class="section services-section" data-adlib-section="services">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
@@ -234,104 +234,104 @@
 
         <div class="services-list">
 
-          <div class="service-row fade-in" data-service>
+          <div class="service-row fade-in" data-service data-adlib-each="services" data-adlib-index="0">
             <span class="service-number">01</span>
             <div class="service-content">
               <div class="service-header">
-                <h3>Strategic Planning</h3>
+                <h3 data-adlib-cms="services.0.name">Strategic Planning</h3>
                 <span class="service-toggle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">The community you serve expects progress. Our straightforward strategic planning process delivers a functional road map for your future.</p>
+              <p class="service-description" data-adlib-cms="services.0.description">The community you serve expects progress. Our straightforward strategic planning process delivers a functional road map for your future.</p>
               <div class="service-body">
                 <div class="service-body-inner">
-                  <h4>Deliverables</h4>
+                  <h4 data-adlib-cms="services.0.listHeading">Deliverables</h4>
                   <ul>
-                    <li>Current strategic plan review and evaluation</li>
-                    <li>“Gaps” analysis</li>
-                    <li>Strategic plan facilitation</li>
-                    <li>A relevant, logical plan you will actually use &mdash; with measurable strategies</li>
+                    <li data-adlib-cms="services.0.deliverables.0">Current strategic plan review and evaluation</li>
+                    <li data-adlib-cms="services.0.deliverables.1">“Gaps” analysis</li>
+                    <li data-adlib-cms="services.0.deliverables.2">Strategic plan facilitation</li>
+                    <li data-adlib-cms="services.0.deliverables.3">A relevant, logical plan you will actually use &mdash; with measurable strategies</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="service-row fade-in" data-service>
+          <div class="service-row fade-in" data-service data-adlib-each="services" data-adlib-index="1">
             <span class="service-number">02</span>
             <div class="service-content">
               <div class="service-header">
-                <h3>Resource Development</h3>
+                <h3 data-adlib-cms="services.1.name">Resource Development</h3>
                 <span class="service-toggle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">As a nonprofit organization, stewardship is your highest calling. Resources are scarce and highly competitive. Our proven methods for resource development deliver effective results.</p>
+              <p class="service-description" data-adlib-cms="services.1.description">As a nonprofit organization, stewardship is your highest calling. Resources are scarce and highly competitive. Our proven methods for resource development deliver effective results.</p>
               <div class="service-body">
                 <div class="service-body-inner">
-                  <h4>Deliverables</h4>
+                  <h4 data-adlib-cms="services.1.listHeading">Deliverables</h4>
                   <ul>
-                    <li>A reliable system for annual and capital giving</li>
-                    <li>A larger, more committed donor base</li>
-                    <li>Diversified funding streams</li>
-                    <li>A broader network of strategic alliances</li>
-                    <li>An intentional process for board development</li>
-                    <li>An engaged board that understands the job</li>
-                    <li>Results-driven committees and task forces</li>
-                    <li>More volunteers delivering your mission</li>
-                    <li>Facility/program development</li>
+                    <li data-adlib-cms="services.1.deliverables.0">A reliable system for annual and capital giving</li>
+                    <li data-adlib-cms="services.1.deliverables.1">A larger, more committed donor base</li>
+                    <li data-adlib-cms="services.1.deliverables.2">Diversified funding streams</li>
+                    <li data-adlib-cms="services.1.deliverables.3">A broader network of strategic alliances</li>
+                    <li data-adlib-cms="services.1.deliverables.4">An intentional process for board development</li>
+                    <li data-adlib-cms="services.1.deliverables.5">An engaged board that understands the job</li>
+                    <li data-adlib-cms="services.1.deliverables.6">Results-driven committees and task forces</li>
+                    <li data-adlib-cms="services.1.deliverables.7">More volunteers delivering your mission</li>
+                    <li data-adlib-cms="services.1.deliverables.8">Facility/program development</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="service-row fade-in" data-service>
+          <div class="service-row fade-in" data-service data-adlib-each="services" data-adlib-index="2">
             <span class="service-number">03</span>
             <div class="service-content">
               <div class="service-header">
-                <h3>Community Relations</h3>
+                <h3 data-adlib-cms="services.2.name">Community Relations</h3>
                 <span class="service-toggle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">A strong plan for sustainability and growth begins with credibility. Our process delivers improved community relations between your organization and your stakeholders.</p>
+              <p class="service-description" data-adlib-cms="services.2.description">A strong plan for sustainability and growth begins with credibility. Our process delivers improved community relations between your organization and your stakeholders.</p>
               <div class="service-body">
                 <div class="service-body-inner">
-                  <h4>Deliverables</h4>
+                  <h4 data-adlib-cms="services.2.listHeading">Deliverables</h4>
                   <ul>
-                    <li>Successful methods for sharing your story</li>
-                    <li>Broader understanding and support for your cause</li>
-                    <li>An image boost</li>
-                    <li>Stronger relationships with your stakeholders</li>
+                    <li data-adlib-cms="services.2.deliverables.0">Successful methods for sharing your story</li>
+                    <li data-adlib-cms="services.2.deliverables.1">Broader understanding and support for your cause</li>
+                    <li data-adlib-cms="services.2.deliverables.2">An image boost</li>
+                    <li data-adlib-cms="services.2.deliverables.3">Stronger relationships with your stakeholders</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="service-row fade-in" data-service>
+          <div class="service-row fade-in" data-service data-adlib-each="services" data-adlib-index="3">
             <span class="service-number">04</span>
             <div class="service-content">
               <div class="service-header">
-                <h3>Community Impact</h3>
+                <h3 data-adlib-cms="services.3.name">Community Impact</h3>
                 <span class="service-toggle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">Our ultimate goal is to advance your mission. We will collaborate with you to:</p>
+              <p class="service-description" data-adlib-cms="services.3.description">Our ultimate goal is to advance your mission. We will collaborate with you to:</p>
               <div class="service-body">
                 <div class="service-body-inner">
-                  <h4>Our Focus</h4>
+                  <h4 data-adlib-cms="services.3.listHeading">Our Focus</h4>
                   <ul>
-                    <li>Leverage and build on existing strengths</li>
-                    <li>Identify and seize opportunities</li>
-                    <li>Develop a plan that is relevant and measurable</li>
-                    <li>Steward existing resources more effectively</li>
-                    <li>Cultivate strategic alliances and other resources</li>
-                    <li>Solve or minimize existing setbacks</li>
-                    <li>Avoid future obstacles</li>
+                    <li data-adlib-cms="services.3.deliverables.0">Leverage and build on existing strengths</li>
+                    <li data-adlib-cms="services.3.deliverables.1">Identify and seize opportunities</li>
+                    <li data-adlib-cms="services.3.deliverables.2">Develop a plan that is relevant and measurable</li>
+                    <li data-adlib-cms="services.3.deliverables.3">Steward existing resources more effectively</li>
+                    <li data-adlib-cms="services.3.deliverables.4">Cultivate strategic alliances and other resources</li>
+                    <li data-adlib-cms="services.3.deliverables.5">Solve or minimize existing setbacks</li>
+                    <li data-adlib-cms="services.3.deliverables.6">Avoid future obstacles</li>
                   </ul>
                 </div>
               </div>
@@ -344,7 +344,7 @@
     </section>
 
     <!-- ==================== WHO WE SERVE ==================== -->
-    <section id="clients" class="section clients-section">
+    <section id="clients" class="section clients-section" data-adlib-section="clients">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
@@ -354,68 +354,68 @@
 
         <div class="client-categories">
 
-          <div class="client-category fade-in slide-right">
-            <h3 class="category-title">Charitable<br>Organizations</h3>
+          <div class="client-category fade-in slide-right" data-adlib-each="clients" data-adlib-index="0">
+            <h3 class="category-title" data-adlib-cms="clients.0.category">Charitable<br>Organizations</h3>
             <ul class="client-list">
-              <li><strong>Agape Pregnancy Resource Center</strong> <span class="client-location">Round Rock, TX</span></li>
-              <li><strong>Bolivar Point Lighthouse Foundation</strong> <span class="client-location">Port Bolivar, TX</span></li>
-              <li><strong>Children&rsquo;s Bereavement Center of South Texas</strong> <span class="client-location">San Antonio, TX</span></li>
-              <li><strong>Explore Austin</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>The Genesis Project</strong> <span class="client-location">Seattle, WA</span></li>
-              <li><strong>Game Plan for Hope</strong> <span class="client-location">Hills, MN</span></li>
-              <li><strong>Greater Austin Foundation for the Deaf</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Greater Austin YMCA</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Heart of Texas Pregnancy Resource Center</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>HOPE Alliance</strong> <span class="client-location">Round Rock, TX</span></li>
-              <li><strong>M25</strong> <span class="client-location">Leander, TX</span></li>
-              <li><strong>Partners in Hope</strong> <span class="client-location">Lakeway, TX; Cedar Park, TX</span></li>
-              <li><strong>Red Oak Hope</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Round Rock Area Arts Council</strong> <span class="client-location">Round Rock, TX</span></li>
-              <li><strong>Round Rock Area Serving Center</strong> <span class="client-location">Round Rock, TX</span></li>
-              <li><strong>Samaritan Health Ministries</strong> <span class="client-location">Leander, TX</span></li>
-              <li><strong>Team Luke Hope for Minds</strong> <span class="client-location">Lubbock, TX; Austin, TX</span></li>
-              <li><strong>Universal Benefits Consortium Cares Foundation</strong> <span class="client-location">Southlake, TX</span></li>
-              <li><strong>YMCA of Central Texas</strong> <span class="client-location">Round Rock, TX</span></li>
-              <li><strong>YMCA of Metropolitan Washington</strong> <span class="client-location">Washington, DC</span></li>
-              <li><strong>YMCA Mid-Majors Group</strong> <span class="client-location">Chicago, IL</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="0"><strong data-adlib-cms="clients.0.clients.0.name">Agape Pregnancy Resource Center</strong> <span class="client-location" data-adlib-cms="clients.0.clients.0.location">Round Rock, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="1"><strong data-adlib-cms="clients.0.clients.1.name">Bolivar Point Lighthouse Foundation</strong> <span class="client-location" data-adlib-cms="clients.0.clients.1.location">Port Bolivar, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="2"><strong data-adlib-cms="clients.0.clients.2.name">Children&rsquo;s Bereavement Center of South Texas</strong> <span class="client-location" data-adlib-cms="clients.0.clients.2.location">San Antonio, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="3"><strong data-adlib-cms="clients.0.clients.3.name">Explore Austin</strong> <span class="client-location" data-adlib-cms="clients.0.clients.3.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="4"><strong data-adlib-cms="clients.0.clients.4.name">The Genesis Project</strong> <span class="client-location" data-adlib-cms="clients.0.clients.4.location">Seattle, WA</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="5"><strong data-adlib-cms="clients.0.clients.5.name">Game Plan for Hope</strong> <span class="client-location" data-adlib-cms="clients.0.clients.5.location">Hills, MN</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="6"><strong data-adlib-cms="clients.0.clients.6.name">Greater Austin Foundation for the Deaf</strong> <span class="client-location" data-adlib-cms="clients.0.clients.6.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="7"><strong data-adlib-cms="clients.0.clients.7.name">Greater Austin YMCA</strong> <span class="client-location" data-adlib-cms="clients.0.clients.7.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="8"><strong data-adlib-cms="clients.0.clients.8.name">Heart of Texas Pregnancy Resource Center</strong> <span class="client-location" data-adlib-cms="clients.0.clients.8.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="9"><strong data-adlib-cms="clients.0.clients.9.name">HOPE Alliance</strong> <span class="client-location" data-adlib-cms="clients.0.clients.9.location">Round Rock, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="10"><strong data-adlib-cms="clients.0.clients.10.name">M25</strong> <span class="client-location" data-adlib-cms="clients.0.clients.10.location">Leander, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="11"><strong data-adlib-cms="clients.0.clients.11.name">Partners in Hope</strong> <span class="client-location" data-adlib-cms="clients.0.clients.11.location">Lakeway, TX; Cedar Park, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="12"><strong data-adlib-cms="clients.0.clients.12.name">Red Oak Hope</strong> <span class="client-location" data-adlib-cms="clients.0.clients.12.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="13"><strong data-adlib-cms="clients.0.clients.13.name">Round Rock Area Arts Council</strong> <span class="client-location" data-adlib-cms="clients.0.clients.13.location">Round Rock, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="14"><strong data-adlib-cms="clients.0.clients.14.name">Round Rock Area Serving Center</strong> <span class="client-location" data-adlib-cms="clients.0.clients.14.location">Round Rock, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="15"><strong data-adlib-cms="clients.0.clients.15.name">Samaritan Health Ministries</strong> <span class="client-location" data-adlib-cms="clients.0.clients.15.location">Leander, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="16"><strong data-adlib-cms="clients.0.clients.16.name">Team Luke Hope for Minds</strong> <span class="client-location" data-adlib-cms="clients.0.clients.16.location">Lubbock, TX; Austin, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="17"><strong data-adlib-cms="clients.0.clients.17.name">Universal Benefits Consortium Cares Foundation</strong> <span class="client-location" data-adlib-cms="clients.0.clients.17.location">Southlake, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="18"><strong data-adlib-cms="clients.0.clients.18.name">YMCA of Central Texas</strong> <span class="client-location" data-adlib-cms="clients.0.clients.18.location">Round Rock, TX</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="19"><strong data-adlib-cms="clients.0.clients.19.name">YMCA of Metropolitan Washington</strong> <span class="client-location" data-adlib-cms="clients.0.clients.19.location">Washington, DC</span></li>
+              <li data-adlib-each="clients.0.clients" data-adlib-index="20"><strong data-adlib-cms="clients.0.clients.20.name">YMCA Mid-Majors Group</strong> <span class="client-location" data-adlib-cms="clients.0.clients.20.location">Chicago, IL</span></li>
             </ul>
           </div>
 
-          <div class="client-category fade-in">
-            <h3 class="category-title">Municipalities, Chambers<br>&amp; Churches</h3>
+          <div class="client-category fade-in" data-adlib-each="clients" data-adlib-index="1">
+            <h3 class="category-title" data-adlib-cms="clients.1.category">Municipalities, Chambers<br>&amp; Churches</h3>
             <ul class="client-list">
-              <li><strong>Austin Christian Fellowship</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Cedar Park Historic &amp; Cultural Preservation Commission</strong> <span class="client-location">Cedar Park, TX</span></li>
-              <li><strong>Central Fort Bend Chamber Alliance</strong> <span class="client-location">Rosenberg, TX</span></li>
-              <li><strong>City of Cedar Park 4B Community Development Corporation</strong> <span class="client-location">Cedar Park, TX</span></li>
-              <li><strong>City of Taylor / Taylor Parks Foundation</strong> <span class="client-location">Taylor, TX</span></li>
-              <li><strong>Go Hillsboro</strong> <span class="client-location">Hillsboro, TX</span></li>
-              <li><strong>Seguin Area Chamber of Commerce</strong> <span class="client-location">Seguin, TX</span></li>
-              <li><strong>Taylor Chamber of Commerce</strong> <span class="client-location">Taylor, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="0"><strong data-adlib-cms="clients.1.clients.0.name">Austin Christian Fellowship</strong> <span class="client-location" data-adlib-cms="clients.1.clients.0.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="1"><strong data-adlib-cms="clients.1.clients.1.name">Cedar Park Historic &amp; Cultural Preservation Commission</strong> <span class="client-location" data-adlib-cms="clients.1.clients.1.location">Cedar Park, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="2"><strong data-adlib-cms="clients.1.clients.2.name">Central Fort Bend Chamber Alliance</strong> <span class="client-location" data-adlib-cms="clients.1.clients.2.location">Rosenberg, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="3"><strong data-adlib-cms="clients.1.clients.3.name">City of Cedar Park 4B Community Development Corporation</strong> <span class="client-location" data-adlib-cms="clients.1.clients.3.location">Cedar Park, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="4"><strong data-adlib-cms="clients.1.clients.4.name">City of Taylor / Taylor Parks Foundation</strong> <span class="client-location" data-adlib-cms="clients.1.clients.4.location">Taylor, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="5"><strong data-adlib-cms="clients.1.clients.5.name">Go Hillsboro</strong> <span class="client-location" data-adlib-cms="clients.1.clients.5.location">Hillsboro, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="6"><strong data-adlib-cms="clients.1.clients.6.name">Seguin Area Chamber of Commerce</strong> <span class="client-location" data-adlib-cms="clients.1.clients.6.location">Seguin, TX</span></li>
+              <li data-adlib-each="clients.1.clients" data-adlib-index="7"><strong data-adlib-cms="clients.1.clients.7.name">Taylor Chamber of Commerce</strong> <span class="client-location" data-adlib-cms="clients.1.clients.7.location">Taylor, TX</span></li>
             </ul>
           </div>
 
-          <div class="client-category fade-in slide-left">
-            <h3 class="category-title">Schools<br>&amp; Education</h3>
+          <div class="client-category fade-in slide-left" data-adlib-each="clients" data-adlib-index="2">
+            <h3 class="category-title" data-adlib-cms="clients.2.category">Schools<br>&amp; Education</h3>
             <ul class="client-list">
-              <li><strong>Association of Educational Service Agencies Foundation</strong> <span class="client-location">Katy, TX</span></li>
-              <li><strong>Coolidge ISD</strong> <span class="client-location">Coolidge, TX</span></li>
-              <li><strong>Education Service Center Region 5</strong> <span class="client-location">Beaumont, TX</span></li>
-              <li><strong>Education Service Center Region 12</strong> <span class="client-location">Waco, TX</span></li>
-              <li><strong>Hill College</strong> <span class="client-location">Hillsboro, TX</span></li>
-              <li><strong>Hillsboro ISD</strong> <span class="client-location">Hillsboro, TX</span></li>
-              <li><strong>Hillsboro ISD Education Foundation</strong> <span class="client-location">Hillsboro, TX</span></li>
-              <li><strong>Jarrell Education Foundation</strong> <span class="client-location">Jarrell, TX</span></li>
-              <li><strong>La Vega Pirates Education Foundation</strong> <span class="client-location">Bellmead, TX</span></li>
-              <li><strong>Lutheran High School of San Antonio</strong> <span class="client-location">San Antonio, TX</span></li>
-              <li><strong>McLennan Community College</strong> <span class="client-location">Waco, TX</span></li>
-              <li><strong>McGregor ISD Education Foundation</strong> <span class="client-location">McGregor, TX</span></li>
-              <li><strong>Palacios ISD Educational Foundation</strong> <span class="client-location">Palacios, TX</span></li>
-              <li><strong>P20 Centroplex Regional Council</strong> <span class="client-location">Temple, TX</span></li>
-              <li><strong>Summit Christian Academy</strong> <span class="client-location">Cedar Park, TX</span></li>
-              <li><strong>Texas School for the Deaf</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Texas School for the Deaf Foundation</strong> <span class="client-location">Austin, TX</span></li>
-              <li><strong>Woodway Christian School</strong> <span class="client-location">Woodway, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="0"><strong data-adlib-cms="clients.2.clients.0.name">Association of Educational Service Agencies Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.0.location">Katy, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="1"><strong data-adlib-cms="clients.2.clients.1.name">Coolidge ISD</strong> <span class="client-location" data-adlib-cms="clients.2.clients.1.location">Coolidge, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="2"><strong data-adlib-cms="clients.2.clients.2.name">Education Service Center Region 5</strong> <span class="client-location" data-adlib-cms="clients.2.clients.2.location">Beaumont, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="3"><strong data-adlib-cms="clients.2.clients.3.name">Education Service Center Region 12</strong> <span class="client-location" data-adlib-cms="clients.2.clients.3.location">Waco, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="4"><strong data-adlib-cms="clients.2.clients.4.name">Hill College</strong> <span class="client-location" data-adlib-cms="clients.2.clients.4.location">Hillsboro, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="5"><strong data-adlib-cms="clients.2.clients.5.name">Hillsboro ISD</strong> <span class="client-location" data-adlib-cms="clients.2.clients.5.location">Hillsboro, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="6"><strong data-adlib-cms="clients.2.clients.6.name">Hillsboro ISD Education Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.6.location">Hillsboro, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="7"><strong data-adlib-cms="clients.2.clients.7.name">Jarrell Education Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.7.location">Jarrell, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="8"><strong data-adlib-cms="clients.2.clients.8.name">La Vega Pirates Education Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.8.location">Bellmead, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="9"><strong data-adlib-cms="clients.2.clients.9.name">Lutheran High School of San Antonio</strong> <span class="client-location" data-adlib-cms="clients.2.clients.9.location">San Antonio, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="10"><strong data-adlib-cms="clients.2.clients.10.name">McLennan Community College</strong> <span class="client-location" data-adlib-cms="clients.2.clients.10.location">Waco, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="11"><strong data-adlib-cms="clients.2.clients.11.name">McGregor ISD Education Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.11.location">McGregor, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="12"><strong data-adlib-cms="clients.2.clients.12.name">Palacios ISD Educational Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.12.location">Palacios, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="13"><strong data-adlib-cms="clients.2.clients.13.name">P20 Centroplex Regional Council</strong> <span class="client-location" data-adlib-cms="clients.2.clients.13.location">Temple, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="14"><strong data-adlib-cms="clients.2.clients.14.name">Summit Christian Academy</strong> <span class="client-location" data-adlib-cms="clients.2.clients.14.location">Cedar Park, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="15"><strong data-adlib-cms="clients.2.clients.15.name">Texas School for the Deaf</strong> <span class="client-location" data-adlib-cms="clients.2.clients.15.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="16"><strong data-adlib-cms="clients.2.clients.16.name">Texas School for the Deaf Foundation</strong> <span class="client-location" data-adlib-cms="clients.2.clients.16.location">Austin, TX</span></li>
+              <li data-adlib-each="clients.2.clients" data-adlib-index="17"><strong data-adlib-cms="clients.2.clients.17.name">Woodway Christian School</strong> <span class="client-location" data-adlib-cms="clients.2.clients.17.location">Woodway, TX</span></li>
             </ul>
           </div>
         </div>
@@ -425,22 +425,22 @@
     </section>
 
     <!-- ==================== ABOUT ==================== -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section" data-adlib-section="about">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
         <div class="about-layout">
           <div class="about-photo-col fade-in slide-right">
-            <img src="images/jeanne-marie-ellis.jpg" alt="Jeanne Marie Ellis, founder of JME Group" class="about-photo" loading="lazy">
+            <img data-adlib-cms="about.photo" data-adlib-type="image" src="images/jeanne-marie-ellis.jpg" alt="Jeanne Marie Ellis, founder of JME Group" class="about-photo" loading="lazy">
           </div>
           <div class="about-text-col">
-            <h2 class="about-name fade-in">Jeanne Marie Ellis</h2>
-            <p class="about-role fade-in">Founder &amp; Principal</p>
-            <p class="about-lead fade-in">A boutique firm in Austin specializing in advancement strategies for nonprofit organizations. Customized solutions for strategic planning, resource development, and community relations.</p>
+            <h2 class="about-name fade-in" data-adlib-cms="about.name">Jeanne Marie Ellis</h2>
+            <p class="about-role fade-in" data-adlib-cms="about.role">Founder &amp; Principal</p>
+            <p class="about-lead fade-in" data-adlib-cms="about.lead">A boutique firm in Austin specializing in advancement strategies for nonprofit organizations. Customized solutions for strategic planning, resource development, and community relations.</p>
             <div class="about-body fade-in">
-              <p>Jeanne Marie holds a bachelor&rsquo;s degree in Public Relations from Texas Tech University. Her career spans over three decades and includes strategic planning, nonprofit operations, public relations, marketing, financial development, volunteer development and facility development.</p>
-              <p>She co-authored a national study for the YMCA called <em>Doing More Together</em>, which explores the rising trends among municipalities partnering with YMCAs to address specific community needs.</p>
-              <p>Jeanne Marie and her husband, Tom, have two grown children. They attend Austin Christian Fellowship, where she serves on the Missions Leadership Team.</p>
+              <p data-adlib-cms="about.bio.0" data-adlib-type="richtext">Jeanne Marie holds a bachelor&rsquo;s degree in Public Relations from Texas Tech University. Her career spans over three decades and includes strategic planning, nonprofit operations, public relations, marketing, financial development, volunteer development and facility development.</p>
+              <p data-adlib-cms="about.bio.1" data-adlib-type="richtext">She co-authored a national study for the YMCA called <em>Doing More Together</em>, which explores the rising trends among municipalities partnering with YMCAs to address specific community needs.</p>
+              <p data-adlib-cms="about.bio.2" data-adlib-type="richtext">Jeanne Marie and her husband, Tom, have two grown children. They attend Austin Christian Fellowship, where she serves on the Missions Leadership Team.</p>
             </div>
           </div>
         </div>
@@ -450,7 +450,7 @@
     </section>
 
     <!-- ==================== CONTACT ==================== -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section" data-adlib-section="contact">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
@@ -460,26 +460,26 @@
         <div class="contact-content">
 
           <div class="contact-info fade-in slide-right">
-            <p class="contact-intro">We&rsquo;d love to hear from you. Reach out to start a conversation about advancing your mission.</p>
+            <p class="contact-intro" data-adlib-cms="contact.intro">We&rsquo;d love to hear from you. Reach out to start a conversation about advancing your mission.</p>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div>
                 <span class="contact-label">Phone</span>
-                <a href="tel:5128017905" class="contact-value">512-801-7905</a>
+                <a href="tel:5128017905" class="contact-value" data-adlib-cms="contact.phone">512-801-7905</a>
               </div>
             </div>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <div>
                 <span class="contact-label">Email</span>
-                <a href="mailto:jme@jmegroup.net" class="contact-value">jme@jmegroup.net</a>
+                <a href="mailto:jme@jmegroup.net" class="contact-value" data-adlib-cms="contact.email">jme@jmegroup.net</a>
               </div>
             </div>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div>
                 <span class="contact-label">Location</span>
-                <span class="contact-value">Austin, TX</span>
+                <span class="contact-value" data-adlib-cms="contact.location">Austin, TX</span>
               </div>
             </div>
           </div>
@@ -517,18 +517,18 @@
 
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="site-footer" data-adlib-section="footer">
     <div class="footer-body">
       <div class="container">
         <div class="footer-content">
           <div class="footer-brand">
             <span class="footer-logo">JME Group</span>
-            <p class="footer-tagline">Our mission is advancing yours.</p>
+            <p class="footer-tagline" data-adlib-cms="footer.tagline">Our mission is advancing yours.</p>
           </div>
           <div class="footer-contact">
-            <a href="tel:5128017905">512-801-7905</a>
-            <a href="mailto:jme@jmegroup.net">jme@jmegroup.net</a>
-            <span>Austin, TX</span>
+            <a href="tel:5128017905" data-adlib-mirror="contact.phone">512-801-7905</a>
+            <a href="mailto:jme@jmegroup.net" data-adlib-mirror="contact.email">jme@jmegroup.net</a>
+            <span data-adlib-mirror="contact.location">Austin, TX</span>
           </div>
         </div>
         <div class="footer-bottom">
