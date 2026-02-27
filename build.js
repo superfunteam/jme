@@ -39,11 +39,14 @@ function br(s) {
 const { hero, testimonials, marquee, mission, approach, services, clients, about, contact, footer } = content;
 
 // Build marquee (original + duplicate for seamless loop)
-const marqueeItems = marquee.map(item =>
+const marqueeItemsAnnotated = marquee.map((item, i) =>
+  `        <span class="marquee-item" data-adlib-cms="marquee.${i}">${esc(item)}</span>\n        <span class="marquee-sep" aria-hidden="true">&middot;</span>`
+).join('\n');
+const marqueeItemsDupe = marquee.map(item =>
   `        <span class="marquee-item">${esc(item)}</span>\n        <span class="marquee-sep" aria-hidden="true">&middot;</span>`
 ).join('\n');
 
-const marqueeHTML = marqueeItems + '\n        <!-- duplicate for seamless loop -->\n' + marqueeItems;
+const marqueeHTML = marqueeItemsAnnotated + '\n        <!-- duplicate for seamless loop -->\n' + marqueeItemsDupe;
 
 // Build testimonial dots
 const testimonialDots = testimonials.map((_, i) =>
@@ -53,17 +56,17 @@ const testimonialDots = testimonials.map((_, i) =>
 // Build testimonial slides
 const testimonialSlides = testimonials.map((t, i) => {
   const photoHTML = t.photo
-    ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}" class="attribution-photo" loading="${i === 0 ? 'eager' : 'lazy'}">`
+    ? `<img data-adlib-cms="testimonials.${i}.photo" data-adlib-type="image" src="${esc(t.photo)}" alt="${esc(t.name)}" class="attribution-photo" loading="${i === 0 ? 'eager' : 'lazy'}">`
     : `<div class="attribution-avatar">${initials(t.name)}</div>`;
-  return `                <div class="testimonial${i === 0 ? ' active' : ''}" data-index="${i}">
+  return `                <div class="testimonial${i === 0 ? ' active' : ''}" data-index="${i}" data-adlib-each="testimonials" data-adlib-index="${i}">
                   <blockquote>
-                    <p>&ldquo;${richEsc(t.quote)}&rdquo;</p>
+                    <p data-adlib-cms="testimonials.${i}.quote">&ldquo;${richEsc(t.quote)}&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
                     ${photoHTML}
                     <div class="attribution-text">
-                      <strong>${esc(t.name)}</strong>
-                      <span>${esc(t.title)}</span>
+                      <strong data-adlib-cms="testimonials.${i}.name">${esc(t.name)}</strong>
+                      <span data-adlib-cms="testimonials.${i}.title">${esc(t.title)}</span>
                     </div>
                   </div>
                 </div>`;
@@ -74,20 +77,22 @@ const ctaHTML = (() => {
   const qs = mission.ctaQuestions;
   const last = qs.length - 1;
   const lines = [];
-  // Combine all non-last questions into one flowing paragraph
-  const combined = qs.slice(0, last).map(q => esc(q)).join(' ');
+  // Each non-last question gets its own annotation span inside a flowing paragraph
+  const combined = qs.slice(0, last).map((q, i) =>
+    `<span data-adlib-cms="mission.ctaQuestions.${i}">${esc(q)}</span>`
+  ).join(' ');
   lines.push(`          <p class="cta-question">${combined}</p>`);
-  // Last question gets word-by-word reveal spans
+  // Last question gets word-by-word reveal spans, with annotation on the wrapper
   const words = qs[last].split(' ').map(w => `<span class="prove-word">${esc(w)}</span>`).join(' ');
-  lines.push(`          <p class="cta-question cta-prove"><em>${words}</em></p>`);
+  lines.push(`          <p class="cta-question cta-prove" data-adlib-cms="mission.ctaQuestions.${last}"><em>${words}</em></p>`);
   return lines.join('\n');
 })();
 
 // Build stats
-const statsHTML = mission.stats.map(s =>
-  `          <div class="stat fade-in" data-counter>
-            <div class="stat-top"><span class="stat-number" data-target="${s.number}">0</span><span class="stat-plus">+</span></div>
-            <span class="stat-label">${esc(s.label)}</span>
+const statsHTML = mission.stats.map((s, i) =>
+  `          <div class="stat fade-in" data-counter data-adlib-each="mission.stats" data-adlib-index="${i}">
+            <div class="stat-top"><span class="stat-number" data-adlib-cms="mission.stats.${i}.number" data-adlib-type="number" data-target="${s.number}">0</span><span class="stat-plus">+</span></div>
+            <span class="stat-label" data-adlib-cms="mission.stats.${i}.label">${esc(s.label)}</span>
           </div>`
 ).join('\n');
 
@@ -98,8 +103,8 @@ const approachTitleHTML = approachTitleParts.length >= 2
   : approach.title;
 
 // Build principles list
-const principlesHTML = approach.principles.map(p =>
-  `              <li>${esc(p)}</li>`
+const principlesHTML = approach.principles.map((p, i) =>
+  `              <li data-adlib-cms="approach.principles.${i}">${esc(p)}</li>`
 ).join('\n');
 
 // Pillar SVG icons (design elements, not content)
@@ -114,33 +119,33 @@ const pillarIcons = [
 
 // Build pillars
 const pillarsHTML = approach.pillars.map((p, i) =>
-  `          <div class="pillar fade-in scale-in">
+  `          <div class="pillar fade-in scale-in" data-adlib-each="approach.pillars" data-adlib-index="${i}">
             ${pillarIcons[i] || ''}
-            <h3>${esc(p.title)}</h3>
-            <p>${richEsc(p.description)}</p>
+            <h3 data-adlib-cms="approach.pillars.${i}.title">${esc(p.title)}</h3>
+            <p data-adlib-cms="approach.pillars.${i}.description">${richEsc(p.description)}</p>
           </div>`
 ).join('\n');
 
 // Build services
 const servicesHTML = services.map((s, i) => {
   const num = String(i + 1).padStart(2, '0');
-  const deliverables = s.deliverables.map(d =>
-    `                    <li>${esc(d)}</li>`
+  const deliverables = s.deliverables.map((d, j) =>
+    `                    <li data-adlib-cms="services.${i}.deliverables.${j}">${esc(d)}</li>`
   ).join('\n');
   return `
-          <div class="service-row fade-in" data-service>
+          <div class="service-row fade-in" data-service data-adlib-each="services" data-adlib-index="${i}">
             <span class="service-number">${num}</span>
             <div class="service-content">
               <div class="service-header">
-                <h3>${esc(s.name)}</h3>
+                <h3 data-adlib-cms="services.${i}.name">${esc(s.name)}</h3>
                 <span class="service-toggle" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </span>
               </div>
-              <p class="service-description">${richEsc(s.description)}</p>
+              <p class="service-description" data-adlib-cms="services.${i}.description">${richEsc(s.description)}</p>
               <div class="service-body">
                 <div class="service-body-inner">
-                  <h4>${esc(s.listHeading)}</h4>
+                  <h4 data-adlib-cms="services.${i}.listHeading">${esc(s.listHeading)}</h4>
                   <ul>
 ${deliverables}
                   </ul>
@@ -153,22 +158,22 @@ ${deliverables}
 // Build client categories
 const animClasses = ['slide-right', '', 'slide-left'];
 const clientsHTML = clients.map((cat, ci) => {
-  const clientItems = cat.clients.map(c =>
-    `              <li><strong>${esc(c.name)}</strong> <span class="client-location">${esc(c.location)}</span></li>`
+  const clientItems = cat.clients.map((c, cj) =>
+    `              <li data-adlib-each="clients.${ci}.clients" data-adlib-index="${cj}"><strong data-adlib-cms="clients.${ci}.clients.${cj}.name">${esc(c.name)}</strong> <span class="client-location" data-adlib-cms="clients.${ci}.clients.${cj}.location">${esc(c.location)}</span></li>`
   ).join('\n');
   const animClass = animClasses[ci] ? ' ' + animClasses[ci] : '';
   return `
-          <div class="client-category fade-in${animClass}">
-            <h3 class="category-title">${br(cat.category)}</h3>
+          <div class="client-category fade-in${animClass}" data-adlib-each="clients" data-adlib-index="${ci}">
+            <h3 class="category-title" data-adlib-cms="clients.${ci}.category">${br(cat.category)}</h3>
             <ul class="client-list">
 ${clientItems}
             </ul>
           </div>`;
 }).join('\n');
 
-// Build bio paragraphs (allow <em> and <a> tags)
-const bioHTML = about.bio.map(p =>
-  `              <p>${richEsc(p)}</p>`
+// Build bio paragraphs (allow <em> for book titles)
+const bioHTML = about.bio.map((p, i) =>
+  `              <p data-adlib-cms="about.bio.${i}" data-adlib-type="richtext">${richEsc(p)}</p>`
 ).join('\n');
 
 // Phone number for tel: link
@@ -200,12 +205,9 @@ const html = `<!DOCTYPE html>
   <!-- Navigation -->
   <nav class="main-nav" id="mainNav">
     <div class="nav-container">
-      <a href="#home" class="nav-logo"><img src="images/jme-logo.svg" alt="JME Group" class="nav-logo-img"></a>
+      <a href="#home" class="nav-logo">JME Group</a>
       <div class="nav-links" id="navLinks">
-        <button class="nav-close" id="navClose" aria-label="Close navigation menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-        </button>
-        <a href="#home" class="nav-link active">Our Mission</a>
+        <a href="#home" class="nav-link active">Home</a>
         <a href="#approach" class="nav-link">Our Approach</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#clients" class="nav-link">Who We Serve</a>
@@ -223,18 +225,18 @@ const html = `<!DOCTYPE html>
   <main>
 
     <!-- ==================== HERO ==================== -->
-    <section id="home" class="hero-section">
+    <section id="home" class="hero-section" data-adlib-section="hero">
       ${hero.videoWebm || hero.videoMp4 ? `<video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-        ${hero.videoWebm ? `<source src="${esc(hero.videoWebm)}" type="video/webm">` : ''}
-        ${hero.videoMp4 ? `<source src="${esc(hero.videoMp4)}" type="video/mp4">` : ''}
+        ${hero.videoWebm ? `<source data-adlib-cms="hero.videoWebm" data-adlib-type="video" src="${esc(hero.videoWebm)}" type="video/webm">` : ''}
+        ${hero.videoMp4 ? `<source data-adlib-cms="hero.videoMp4" data-adlib-type="video" src="${esc(hero.videoMp4)}" type="video/mp4">` : ''}
       </video>` : ''}
       <div class="container">
         <div class="hero-grid">
           <div class="hero-headline" data-parallax="0.12">
             <h1>
-              <span class="hero-line">${esc(hero.headline[0])}</span>
-              <span class="hero-line">${esc(hero.headline[1])}</span>
-              <span class="hero-line hero-em"><em>${esc(hero.headline[2])}</em></span>
+              <span class="hero-line" data-adlib-cms="hero.headline.0">${esc(hero.headline[0])}</span>
+              <span class="hero-line" data-adlib-cms="hero.headline.1">${esc(hero.headline[1])}</span>
+              <span class="hero-line hero-em" data-adlib-cms="hero.headline.2"><em>${esc(hero.headline[2])}</em></span>
             </h1>
           </div>
           <div class="hero-sidebar fade-in slide-left">
@@ -245,7 +247,7 @@ ${testimonialDots}
               <div class="testimonial-carousel" id="testimonialCarousel">
 ${testimonialSlides}
               </div>
-              <a href="#contact" class="btn btn-primary hero-btn">${esc(hero.cta)}</a>
+              <a href="#contact" class="btn btn-primary hero-btn" data-adlib-cms="hero.cta">${esc(hero.cta)}</a>
             </div>
           </div>
         </div>
@@ -254,7 +256,7 @@ ${testimonialSlides}
     </section>
 
     <!-- ==================== MARQUEE ==================== -->
-    <div class="marquee-band" aria-label="Areas of focus">
+    <div class="marquee-band" aria-label="Areas of focus" data-adlib-section="marquee">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="marquee-overflow">
         <div class="marquee-track" id="marqueeTrack">
@@ -265,15 +267,15 @@ ${marqueeHTML}
 
 
     <!-- ==================== MISSION ==================== -->
-    <section id="mission" class="section mission-section">
+    <section id="mission" class="section mission-section" data-adlib-section="mission">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
-        <p class="mission-lead text-reveal">${richEsc(mission.lead)}</p>
+        <p class="mission-lead text-reveal" data-adlib-cms="mission.lead">${richEsc(mission.lead)}</p>
 
         <div class="mission-body fade-in slide-right">
-          <p>${richEsc(mission.body[0])}</p>
-          <p>${richEsc(mission.body[1])}</p>
+          <p data-adlib-cms="mission.body.0">${richEsc(mission.body[0])}</p>
+          <p data-adlib-cms="mission.body.1">${richEsc(mission.body[1])}</p>
         </div>
         <div class="stats-row">
 ${statsHTML}
@@ -282,7 +284,7 @@ ${statsHTML}
         <div class="mission-cta fade-in">
           <div class="cta-divider" aria-hidden="true"></div>
 ${ctaHTML}
-          <a href="#contact" class="cta-link">${esc(mission.ctaLink)} &rarr;</a>
+          <a href="#contact" class="cta-link" data-adlib-cms="mission.ctaLink">${esc(mission.ctaLink)} &rarr;</a>
         </div>
 
       </div>
@@ -290,17 +292,17 @@ ${ctaHTML}
     </section>
 
     <!-- ==================== OUR APPROACH ==================== -->
-    <section id="approach" class="section approach-section">
+    <section id="approach" class="section approach-section" data-adlib-section="approach">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
         <div class="approach-header">
           <div class="approach-title-block fade-in slide-right">
-            <h2 class="approach-title">${approachTitleHTML}</h2>
-            <p class="approach-intro">${richEsc(approach.intro)}</p>
+            <h2 class="approach-title" data-adlib-cms="approach.title">${approachTitleHTML}</h2>
+            <p class="approach-intro" data-adlib-cms="approach.intro">${richEsc(approach.intro)}</p>
           </div>
           <div class="approach-principles fade-in slide-left">
-            <p class="principles-lead">${esc(approach.principlesLead)}</p>
+            <p class="principles-lead" data-adlib-cms="approach.principlesLead">${esc(approach.principlesLead)}</p>
             <ul>
 ${principlesHTML}
             </ul>
@@ -316,7 +318,7 @@ ${pillarsHTML}
     </section>
 
     <!-- ==================== SERVICES ==================== -->
-    <section id="services" class="section services-section">
+    <section id="services" class="section services-section" data-adlib-section="services">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
@@ -332,7 +334,7 @@ ${servicesHTML}
     </section>
 
     <!-- ==================== WHO WE SERVE ==================== -->
-    <section id="clients" class="section clients-section">
+    <section id="clients" class="section clients-section" data-adlib-section="clients">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
@@ -349,18 +351,18 @@ ${clientsHTML}
     </section>
 
     <!-- ==================== ABOUT ==================== -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section" data-adlib-section="about">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-off-white-mobile.png"><img src="images/wave-off-white.png" alt=""></picture>
       <div class="container">
 
         <div class="about-layout">
           <div class="about-photo-col fade-in slide-right">
-            <img src="${esc(about.photo)}" alt="${esc(about.name)}, founder of JME Group" class="about-photo" loading="lazy">
+            <img data-adlib-cms="about.photo" data-adlib-type="image" src="${esc(about.photo)}" alt="${esc(about.name)}, founder of JME Group" class="about-photo" loading="lazy">
           </div>
           <div class="about-text-col">
-            <h2 class="about-name fade-in">${esc(about.name)}</h2>
-            <p class="about-role fade-in">${esc(about.role)}</p>
-            <p class="about-lead fade-in">${richEsc(about.lead)}</p>
+            <h2 class="about-name fade-in" data-adlib-cms="about.name">${esc(about.name)}</h2>
+            <p class="about-role fade-in" data-adlib-cms="about.role">${esc(about.role)}</p>
+            <p class="about-lead fade-in" data-adlib-cms="about.lead">${richEsc(about.lead)}</p>
             <div class="about-body fade-in">
 ${bioHTML}
             </div>
@@ -372,7 +374,7 @@ ${bioHTML}
     </section>
 
     <!-- ==================== CONTACT ==================== -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section" data-adlib-section="contact">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
 
@@ -382,26 +384,26 @@ ${bioHTML}
         <div class="contact-content">
 
           <div class="contact-info fade-in slide-right">
-            <p class="contact-intro">${richEsc(contact.intro)}</p>
+            <p class="contact-intro" data-adlib-cms="contact.intro">${richEsc(contact.intro)}</p>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div>
                 <span class="contact-label">Phone</span>
-                <a href="tel:${phoneDigits}" class="contact-value">${esc(contact.phone)}</a>
+                <a href="tel:${phoneDigits}" class="contact-value" data-adlib-cms="contact.phone">${esc(contact.phone)}</a>
               </div>
             </div>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <div>
                 <span class="contact-label">Email</span>
-                <a href="mailto:${contact.email}" class="contact-value">${esc(contact.email)}</a>
+                <a href="mailto:${contact.email}" class="contact-value" data-adlib-cms="contact.email">${esc(contact.email)}</a>
               </div>
             </div>
             <div class="contact-detail">
               <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div>
                 <span class="contact-label">Location</span>
-                <span class="contact-value">${esc(contact.location)}</span>
+                <span class="contact-value" data-adlib-cms="contact.location">${esc(contact.location)}</span>
               </div>
             </div>
           </div>
@@ -439,19 +441,18 @@ ${bioHTML}
 
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer class="site-footer" data-adlib-section="footer">
     <div class="footer-body">
-      <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-dark-mobile.png"><img src="images/wave-dark.png" alt=""></picture>
       <div class="container">
         <div class="footer-content">
           <div class="footer-brand">
-            <img src="images/jme-logo-reversed.svg" alt="JME Group" class="footer-logo">
-            <p class="footer-tagline">${esc(footer.tagline)}</p>
+            <span class="footer-logo">JME Group</span>
+            <p class="footer-tagline" data-adlib-cms="footer.tagline">${esc(footer.tagline)}</p>
           </div>
           <div class="footer-contact">
-            <a href="tel:${phoneDigits}">${esc(contact.phone)}</a>
-            <a href="mailto:${contact.email}">${esc(contact.email)}</a>
-            <span>${esc(contact.location)}</span>
+            <a href="tel:${phoneDigits}" data-adlib-mirror="contact.phone">${esc(contact.phone)}</a>
+            <a href="mailto:${contact.email}" data-adlib-mirror="contact.email">${esc(contact.email)}</a>
+            <span data-adlib-mirror="contact.location">${esc(contact.location)}</span>
           </div>
         </div>
         <div class="footer-bottom">
