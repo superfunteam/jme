@@ -835,14 +835,17 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 .service-row:hover .service-header h3 { color: var(--teal-dark); }
 
 .service-toggle {
-  width: 28px; height: 28px;
+  width: 24px; height: 24px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--teal-pale);
-  transition: color 0.3s ease, transform 0.4s ease;
+  color: var(--heading);
+  background: transparent;
+  border: 1px solid var(--sage-dark);
+  border-radius: 50%;
+  transition: color 0.3s ease, transform 0.4s ease, border-color 0.3s ease;
   flex-shrink: 0;
 }
 
-.service-toggle svg { width: 18px; height: 18px; }
+.service-toggle svg { width: 16px; height: 16px; }
 
 .service-row:hover .service-toggle { color: var(--teal); }
 .service-row.expanded .service-toggle { transform: rotate(45deg); color: var(--teal); }
