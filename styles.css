@@ -447,6 +447,10 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   margin-bottom: 28px;
 }
 
+.marquee-overflow {
+  overflow: hidden;
+}
+
 .section-wave {
   position: absolute;
   top: -2rem;

@@ -244,8 +244,10 @@ ${testimonialSlides}
     <!-- ==================== MARQUEE ==================== -->
     <div class="marquee-band" aria-label="Areas of focus">
       <img src="images/wave-sage.png" class="section-wave" alt="" aria-hidden="true">
-      <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-overflow">
+        <div class="marquee-track" id="marqueeTrack">
 ${marqueeHTML}
+        </div>
       </div>
     </div>
 
