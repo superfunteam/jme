@@ -60,8 +60,10 @@ function textContent(s) {
 
 // Get innerHTML but decode entity-encoded tags back to real tags for richtext
 function richContent(s) {
-  // For richtext, we want to preserve <em> tags but strip everything else
-  let text = s.replace(/<(?!\/?em\b)[^>]+>/g, '');
+  // For richtext, preserve <em>, <strong>, and <a> tags but strip everything else
+  let text = s.replace(/<(?!\/?(?:em|strong|a)\b)[^>]+>/g, '');
+  // Strip rel="noopener" added automatically by build.js
+  text = text.replace(/ rel="noopener"/g, '');
   return decode(text);
 }
 
