@@ -92,7 +92,7 @@ const ctaHTML = (() => {
   ).join(' ');
   lines.push(`          <p class="cta-question">${combined}</p>`);
   // Last question gets word-by-word reveal spans, with annotation on the wrapper
-  const words = qs[last].split(' ').map(w => `<span class="prove-word">${esc(w)}</span>`).join(' ');
+  const words = qs[last].split(' ').map((w, i) => `<span class="prove-word" style="transition-delay:${((i + 1) * 0.15).toFixed(2)}s">${esc(w)}</span>`).join(' ');
   lines.push(`          <p class="cta-question cta-prove" data-adlib-cms="mission.ctaQuestions.${last}"><em>${words}</em></p>`);
   return lines.join('\n');
 })();
