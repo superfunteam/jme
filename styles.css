@@ -285,7 +285,7 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 
 .hero-headline h1 {
   font-weight: 300;
-  font-size: clamp(3.2rem, 7.5vw, 6rem);
+  font-size: clamp(3.5rem, 8.5vw, 6.5rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: var(--heading);
@@ -1213,9 +1213,6 @@ a.contact-value:hover { color: var(--teal-dark); }
   .hero-headline h1 { font-size: 7rem; }
 }
 
-@media (min-width: 1700px) {
-  .hero-headline h1 { font-size: 8rem; }
-}
 
 
 /* ============================================================
@@ -1233,7 +1230,8 @@ a.contact-value:hover { color: var(--teal-dark); }
     padding-top: 8px;
   }
 
-  .hero-headline h1 { font-size: clamp(2.8rem, 8vw, 4.5rem); }
+  .hero-headline { text-align: center; }
+  .hero-headline h1 { font-size: clamp(3.5rem, 10vw, 5.5rem); }
 
   .stats-row {
     gap: 56px;
