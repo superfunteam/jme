@@ -45,7 +45,7 @@ function br(s) {
   return esc(s).replace(/\n/g, '<br>');
 }
 
-const { hero, testimonials, marquee, mission, approach, services, clients, about, contact, footer } = content;
+const { hero, testimonials, fullTestimonials, marquee, mission, approach, services, clients, about, contact, footer } = content;
 
 // Build marquee (original + duplicate for seamless loop)
 const marqueeItemsAnnotated = marquee.map((item, i) =>
@@ -57,10 +57,16 @@ const marqueeItemsDupe = marquee.map(item =>
 
 const marqueeHTML = marqueeItemsAnnotated + '\n        <!-- duplicate for seamless loop -->\n' + marqueeItemsDupe;
 
-// Build testimonial dots
-const testimonialDots = testimonials.map((_, i) =>
-  `                <button class="testimonial-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Testimonial ${i + 1}"></button>`
+// Build testimonial nav (dots + next arrow)
+const testimonialDotsInner = testimonials.map((_, i) =>
+  `                  <button class="testimonial-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Testimonial ${i + 1}"></button>`
 ).join('\n');
+const testimonialDots = `                <div class="testimonial-dots">
+${testimonialDotsInner}
+                </div>
+                <button class="testimonial-arrow" id="testimonialNext" aria-label="Next testimonial">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,6 15,12 9,18"/></svg>
+                </button>`;
 
 // Build testimonial slides
 const testimonialSlides = testimonials.map((t, i) => {
@@ -179,6 +185,42 @@ ${clientItems}
             </ul>
           </div>`;
 }).join('\n');
+
+// Build full testimonials (inside "Who We Serve" section)
+const fullTestimonialDots = [
+  `            <button class="client-testimonial-arrow" id="clientTestimonialPrev" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15,6 9,12 15,18"/></svg>
+            </button>`,
+  ...fullTestimonials.map((_, i) =>
+    `            <button class="client-testimonial-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Testimonial ${i + 1}"></button>`
+  ),
+  `            <button class="client-testimonial-arrow" id="clientTestimonialNext" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,6 15,12 9,18"/></svg>
+            </button>`
+].join('\n');
+
+const fullTestimonialSlides = fullTestimonials.map((t, i) =>
+  `              <div class="client-testimonial${i === 0 ? ' active' : ''}" data-index="${i}" data-adlib-each="fullTestimonials" data-adlib-index="${i}">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.${i}.quote">&ldquo;${richEsc(t.quote)}&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.${i}.name">${esc(t.name)}</strong>
+                  <span data-adlib-cms="fullTestimonials.${i}.title">${esc(t.title)}</span>
+                </div>
+              </div>`
+).join('\n');
+
+const fullTestimonialsHTML = `
+        <div class="client-testimonials fade-in" data-adlib-section="fullTestimonials">
+          <h3 class="client-testimonials-heading">What Our Clients Say</h3>
+          <div class="client-testimonials-carousel" id="clientTestimonialsCarousel">
+${fullTestimonialSlides}
+          </div>
+          <div class="client-testimonials-nav" aria-label="Testimonial navigation">
+${fullTestimonialDots}
+          </div>
+        </div>`;
 
 // Build bio paragraphs (allow <em> for book titles)
 const bioHTML = about.bio.map((p, i) =>
@@ -368,6 +410,7 @@ ${servicesHTML}
         <div class="client-categories">
 ${clientsHTML}
         </div>
+${fullTestimonialsHTML}
 
       </div>
 

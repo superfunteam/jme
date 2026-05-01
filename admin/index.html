@@ -338,6 +338,7 @@
       <button class="nav-btn" onclick="showSection('approach', this)">Our Approach</button>
       <button class="nav-btn" onclick="showSection('services', this)">Services</button>
       <button class="nav-btn" onclick="showSection('clients', this)">Who We Serve</button>
+      <button class="nav-btn" onclick="showSection('fullTestimonials', this)">Client Quotes</button>
       <button class="nav-btn" onclick="showSection('about', this)">About</button>
       <button class="nav-btn" onclick="showSection('contact', this)">Contact</button>
       <button class="nav-btn" onclick="showSection('footer', this)">Footer</button>
@@ -449,6 +450,14 @@
         <h2>Who We Serve</h2>
         <p class="section-desc">Your client list organized by category</p>
         <div id="clients-categories"></div>
+      </div>
+
+      <!-- ── 7b. CLIENT QUOTES ── -->
+      <div id="section-fullTestimonials" class="section-panel">
+        <h2>Client Quotes</h2>
+        <p class="section-desc">Full testimonials that rotate in the Who We Serve section</p>
+        <div id="fullTestimonials-cards"></div>
+        <button class="btn-add" onclick="addFullTestimonial()">+ Add Testimonial</button>
       </div>
 
       <!-- ── 8. ABOUT ── -->
@@ -651,6 +660,7 @@
       });
       // Dynamic sections
       renderTestimonials();
+      renderFullTestimonials();
       renderMarquee();
       renderStats();
       renderPillars();
@@ -737,6 +747,53 @@
           `<img src="${e.target.result}" class="photo-preview" alt="">`;
       };
       reader.readAsDataURL(file);
+    }
+
+    // ═══════════ FULL TESTIMONIALS (Client Quotes) ═══════════
+    function renderFullTestimonials() {
+      if (!content.fullTestimonials) content.fullTestimonials = [];
+      const container = document.getElementById('fullTestimonials-cards');
+      container.innerHTML = content.fullTestimonials.map((t, i) => `
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Quote ${i + 1}</h3>
+            <button class="btn-remove" onclick="removeFullTestimonial(${i})" title="Remove">&times;</button>
+          </div>
+          <label>Quote</label>
+          <div class="quill-editor" id="quill-ft-${i}"></div>
+          <div class="inline-fields">
+            <div>
+              <label>Name</label>
+              <input value="${escAttr(t.name)}" onchange="content.fullTestimonials[${i}].name=this.value">
+            </div>
+            <div>
+              <label>Title / Organization</label>
+              <input value="${escAttr(t.title)}" onchange="content.fullTestimonials[${i}].title=this.value">
+            </div>
+          </div>
+        </div>
+      `).join('');
+      // Init Quill editors
+      content.fullTestimonials.forEach((t, i) => {
+        const el = document.getElementById('quill-ft-' + i);
+        if (!el) return;
+        const quill = initQuill(el);
+        loadIntoQuill(quill, t.quote);
+        quill.on('text-change', () => {
+          content.fullTestimonials[i].quote = cleanQuillHTML(quill.root.innerHTML);
+        });
+      });
+    }
+
+    function addFullTestimonial() {
+      if (!content.fullTestimonials) content.fullTestimonials = [];
+      content.fullTestimonials.push({ quote: '', name: '', title: '' });
+      renderFullTestimonials();
+    }
+
+    function removeFullTestimonial(i) {
+      content.fullTestimonials.splice(i, 1);
+      renderFullTestimonials();
     }
 
     // ═══════════ MARQUEE ═══════════

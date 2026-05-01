@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startCarousel() {
-      carouselTimer = setInterval(nextSlide, 6000);
+      carouselTimer = setInterval(nextSlide, 8000);
     }
 
     dots.forEach(dot => {
@@ -301,8 +301,58 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    const heroNextBtn = document.getElementById('testimonialNext');
+    if (heroNextBtn) {
+      heroNextBtn.addEventListener('click', () => {
+        clearInterval(carouselTimer);
+        nextSlide();
+        startCarousel();
+      });
+    }
+
     if (!prefersReducedMotion) {
       startCarousel();
+    }
+  }
+
+
+  // ── Client testimonials carousel ──
+  const clientCarousel = document.getElementById('clientTestimonialsCarousel');
+  if (clientCarousel) {
+    const clientSlides = clientCarousel.querySelectorAll('.client-testimonial');
+    const clientDots = document.querySelectorAll('.client-testimonial-dot');
+    let currentClientSlide = 0;
+    let clientTimer = null;
+
+    function showClientSlide(index) {
+      clientSlides.forEach(s => s.classList.remove('active'));
+      clientDots.forEach(d => d.classList.remove('active'));
+      currentClientSlide = index;
+      clientSlides[currentClientSlide].classList.add('active');
+      clientDots[currentClientSlide].classList.add('active');
+    }
+
+    function nextClientSlide() {
+      showClientSlide((currentClientSlide + 1) % clientSlides.length);
+    }
+
+    function prevClientSlide() {
+      showClientSlide((currentClientSlide - 1 + clientSlides.length) % clientSlides.length);
+    }
+
+    clientDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showClientSlide(parseInt(dot.dataset.slide));
+      });
+    });
+
+    const clientPrevBtn = document.getElementById('clientTestimonialPrev');
+    const clientNextBtn = document.getElementById('clientTestimonialNext');
+    if (clientPrevBtn) {
+      clientPrevBtn.addEventListener('click', prevClientSlide);
+    }
+    if (clientNextBtn) {
+      clientNextBtn.addEventListener('click', nextClientSlide);
     }
   }
 

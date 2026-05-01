@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=bcaec204bc">
+  <link rel="stylesheet" href="styles.css?v=cd61b97825">
 </head>
 <body>
 
@@ -74,9 +74,16 @@
           <div class="hero-sidebar fade-in slide-left">
             <div class="testimonial-card">
               <div class="testimonial-nav" aria-label="Testimonial navigation">
-                <button class="testimonial-dot active" data-slide="0" aria-label="Testimonial 1"></button>
-                <button class="testimonial-dot" data-slide="1" aria-label="Testimonial 2"></button>
-                <button class="testimonial-dot" data-slide="2" aria-label="Testimonial 3"></button>
+                <div class="testimonial-dots">
+                  <button class="testimonial-dot active" data-slide="0" aria-label="Testimonial 1"></button>
+                  <button class="testimonial-dot" data-slide="1" aria-label="Testimonial 2"></button>
+                  <button class="testimonial-dot" data-slide="2" aria-label="Testimonial 3"></button>
+                  <button class="testimonial-dot" data-slide="3" aria-label="Testimonial 4"></button>
+                  <button class="testimonial-dot" data-slide="4" aria-label="Testimonial 5"></button>
+                </div>
+                <button class="testimonial-arrow" id="testimonialNext" aria-label="Next testimonial">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,6 15,12 9,18"/></svg>
+                </button>
               </div>
               <div class="testimonial-carousel" id="testimonialCarousel">
                 <div class="testimonial active" data-index="0" data-adlib-each="testimonials" data-adlib-index="0">
@@ -93,25 +100,49 @@
                 </div>
                 <div class="testimonial" data-index="1" data-adlib-each="testimonials" data-adlib-index="1">
                   <blockquote>
-                    <p data-adlib-cms="testimonials.1.quote">&ldquo;JME Group helped us develop a strategic plan that truly works. Their approach is practical, thoughtful, and results-driven.&rdquo;</p>
+                    <p data-adlib-cms="testimonials.1.quote">&ldquo;Her deep industry knowledge and strategic guidance didn’t just help us grow; they positioned us to become entirely self-sustaining.&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
-                    <div class="attribution-avatar">ST</div>
+                    <div class="attribution-avatar">TB</div>
                     <div class="attribution-text">
-                      <strong data-adlib-cms="testimonials.1.name">Sarah Thompson</strong>
-                      <span data-adlib-cms="testimonials.1.title">Executive Director, Community Nonprofit</span>
+                      <strong data-adlib-cms="testimonials.1.name">Tammy Becker</strong>
+                      <span data-adlib-cms="testimonials.1.title">Deputy Executive Director, Education Service Center Region 12</span>
                     </div>
                   </div>
                 </div>
                 <div class="testimonial" data-index="2" data-adlib-each="testimonials" data-adlib-index="2">
                   <blockquote>
-                    <p data-adlib-cms="testimonials.2.quote">&ldquo;Their active listening and custom approach made all the difference. We finally have the resources and direction we needed.&rdquo;</p>
+                    <p data-adlib-cms="testimonials.2.quote">&ldquo;She brings a rare level of emotional intelligence to her work&mdash;consistently reading the room with accuracy and navigating even the most complex dynamics with grace and ease.&rdquo;</p>
                   </blockquote>
                   <div class="testimonial-attr">
-                    <div class="attribution-avatar">MR</div>
+                    <img data-adlib-cms="testimonials.2.photo" data-adlib-type="image" src="images/testimonial-2.jpg" alt="Laura Buckley" class="attribution-photo" loading="lazy">
                     <div class="attribution-text">
-                      <strong data-adlib-cms="testimonials.2.name">Michael Rivera</strong>
-                      <span data-adlib-cms="testimonials.2.title">Board Chair, Youth Services Organization</span>
+                      <strong data-adlib-cms="testimonials.2.name">Laura Buckley</strong>
+                      <span data-adlib-cms="testimonials.2.title">Asst. Superintendent of Student Services, Jarrell ISD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial" data-index="3" data-adlib-each="testimonials" data-adlib-index="3">
+                  <blockquote>
+                    <p data-adlib-cms="testimonials.3.quote">&ldquo;Jeanne Marie is more than a consultant; she is a dedicated partner in progress. She doesn’t just show you the path&mdash;she helps you build it.&rdquo;</p>
+                  </blockquote>
+                  <div class="testimonial-attr">
+                    <div class="attribution-avatar">JD</div>
+                    <div class="attribution-text">
+                      <strong data-adlib-cms="testimonials.3.name">Jody DeSantis</strong>
+                      <span data-adlib-cms="testimonials.3.title">Board Treasurer, Bolivar Point Lighthouse Foundation</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial" data-index="4" data-adlib-each="testimonials" data-adlib-index="4">
+                  <blockquote>
+                    <p data-adlib-cms="testimonials.4.quote">&ldquo;Jeanne Marie brings the calm to a storm of uncertainty. Her years of experience and expertise have helped grow our foundation from a dream into a solid and sustainable entity.&rdquo;</p>
+                  </blockquote>
+                  <div class="testimonial-attr">
+                    <img data-adlib-cms="testimonials.4.photo" data-adlib-type="image" src="images/testimonial-4.jpg" alt="Alexis Neumann, Ph.D." class="attribution-photo" loading="lazy">
+                    <div class="attribution-text">
+                      <strong data-adlib-cms="testimonials.4.name">Alexis Neumann, Ph.D.</strong>
+                      <span data-adlib-cms="testimonials.4.title">Superintendent, Rapoport Academy</span>
                     </div>
                   </div>
                 </div>
@@ -434,6 +465,110 @@
           </div>
         </div>
 
+        <div class="client-testimonials fade-in" data-adlib-section="fullTestimonials">
+          <h3 class="client-testimonials-heading">What Our Clients Say</h3>
+          <div class="client-testimonials-carousel" id="clientTestimonialsCarousel">
+              <div class="client-testimonial active" data-index="0" data-adlib-each="fullTestimonials" data-adlib-index="0">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.0.quote">&ldquo;Working with Jeanne Marie came at a pivotal moment for Explore Austin. I needed to guide my board through complex decisions around land acquisition and building a future headquarters, and I wanted to do it thoughtfully, as it was the largest endeavor the organization had ever considered. Jeanne Marie met my needs with both expertise and care. Her background in public-private partnerships and bringing large projects to life is impressive, but what was most meaningful was how she showed up as a partner. She helped me think clearly, ask better questions, and shape a story that felt grounded. Jeanne Marie has a rare ability to combine strategic insight with genuine care for the people and projects she’s working with - I’m grateful for her partnership.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.0.name">Kathleen Schneeman</strong>
+                  <span data-adlib-cms="fullTestimonials.0.title">Executive Director, Explore Austin</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="1" data-adlib-each="fullTestimonials" data-adlib-index="1">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.1.quote">&ldquo;Working with Jeanne Marie Ellis has been transformative for our Foundation. Her deep industry knowledge and strategic guidance didn’t just help us grow; they positioned us to become entirely self-sustaining. Beyond the logistics of grant applications and board communications, she is an invaluable thought partner. She has turned what used to be a ‘heavy lift’ into a ‘light touch,’ allowing our leadership to focus on our mission while she handles the complexities with ease.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.1.name">Tammy Becker</strong>
+                  <span data-adlib-cms="fullTestimonials.1.title">Deputy Executive Director, Academic Services, Education Service Center Region 12</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="2" data-adlib-each="fullTestimonials" data-adlib-index="2">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.2.quote">&ldquo;Working with Jeanne Marie has been a true gift! She brings a rare level of emotional intelligence to her work&mdash;consistently reading the room with accuracy and navigating even the most complex dynamics with grace and ease. Her presence fosters trust, clarity, and forward momentum, making collaboration feel both productive and deeply supportive. Jeanne Marie has a unique ability to balance strategic insight with genuine care for people, and it shows in every interaction.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.2.name">Laura Buckley</strong>
+                  <span data-adlib-cms="fullTestimonials.2.title">Asst. Superintendent of Student Services, Jarrell ISD</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="3" data-adlib-each="fullTestimonials" data-adlib-index="3">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.3.quote">&ldquo;Jeanne Marie has been an incredible support to both my organization as a whole and me as a leader, through seasons of both complex challenges and exciting growth. She has a gift for looking at the big picture and supporting organizations in setting and tackling the most pressing priorities, while also recognizing the importance of serving and honoring the humans at the center of any mission. It has been a gift to have a trustworthy support like Jeanne Marie, who can move through so many facets of an organization and provide salient, steady feedback and ideas. It is a rare gift, and we are grateful to have her expertise impact our work at Red Oak Hope!&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.3.name">Haley Patterson</strong>
+                  <span data-adlib-cms="fullTestimonials.3.title">Executive Director, Red Oak Hope</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="4" data-adlib-each="fullTestimonials" data-adlib-index="4">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.4.quote">&ldquo;Jeanne Marie brings the calm to a storm of uncertainty. Her years of experience and expertise have helped grow our foundation from a dream into a solid and sustainable entity that is focused on those we serve with structure to be easily managed and funded to support decades of give-back to area children. She has guided us in documentation creation and updates, mission identification and clarity, and the in and out of general management for gifts and grants. I can’t recommend her highly enough! Anyone would benefit from her partnership and consultation.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.4.name">Alexis Neumann, Ph.D.</strong>
+                  <span data-adlib-cms="fullTestimonials.4.title">Superintendent, Rapoport Academy</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="5" data-adlib-each="fullTestimonials" data-adlib-index="5">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.5.quote">&ldquo;Working with Jeanne Marie Ellis has been a transformative experience for our nonprofit. When we first engaged her services, we were a small organization with a big vision but needed a concrete roadmap to scale our impact. Jeanne Marie didn’t just provide a consultant’s report; she provided a masterclass in Advancement Strategy. What sets Jeanne Marie apart is her ability to live up to her tagline: “Our mission is advancing yours.” She has an uncanny knack for grounding every piece of advice in our core values while simultaneously pushing us toward a higher standard of professional success. Jeanne Marie is more than a consultant; she is a dedicated partner in progress. For any nonprofit, school, or municipality looking to bridge the gap between their current reality and their ultimate potential, I cannot recommend the JME Group highly enough. She doesn’t just show you the path&mdash;she helps you build it.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.5.name">Jody DeSantis</strong>
+                  <span data-adlib-cms="fullTestimonials.5.title">Treasurer, Board of Directors, Bolivar Point Lighthouse Foundation</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="6" data-adlib-each="fullTestimonials" data-adlib-index="6">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.6.quote">&ldquo;Jeanne Marie Ellis has served as a consultant for our organization for over eight years, and her impact has been invaluable. Her kindness, dedication, and passion for our work are evident in everything she does. She is incredibly detail-oriented and works tirelessly to ensure we remain in full compliance, giving us great confidence and peace of mind. Jeanne Marie truly cares about our mission and consistently goes above and beyond to support it. I would highly recommend her to any nonprofit looking for a knowledgeable, dependable, and mission-driven consultant. She is a joy to work with!&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.6.name">Ronda Johnson</strong>
+                  <span data-adlib-cms="fullTestimonials.6.title">Executive Director, Team Luke Hope for Minds</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="7" data-adlib-each="fullTestimonials" data-adlib-index="7">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.7.quote">&ldquo;After 20 successful years of working together to help me create positive public relations, build non-profit foundations and apply her special gift for gathering the right people around the right mission, Jeanne Marie Ellis remains a colleague, friend, and key part of my work. During my time as a school superintendent, executive director of ESC Region 12 and now as an education consultant, her skill, integrity and rock-solid commitment to her clients remain invaluable to my work. I can’t imagine working with anyone else!&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.7.name">Jerry Maze, Ed.D.</strong>
+                  <span data-adlib-cms="fullTestimonials.7.title">Owner/CEO, Maze Education Associates</span>
+                </div>
+              </div>
+              <div class="client-testimonial" data-index="8" data-adlib-each="fullTestimonials" data-adlib-index="8">
+                <blockquote>
+                  <p data-adlib-cms="fullTestimonials.8.quote">&ldquo;As the Board Chair of a nonprofit organization undergoing a CEO/Founder transition, we hired Jeanne Marie Ellis as the Interim CEO to guide us through the process. Her leadership proved truly game-changing in facilitating a successful transition. Jeanne Marie’s collaborative approach and executive leadership skills were key in resetting the organization and positioning it to move forward. Her ability to swiftly establish supportive and constructive relationships with the team and board was pivotal. She led with kindness, grace, clarity, and professional directness. Jeanne Marie’s comprehensive approach to the organization’s various areas, both local and international, enabled us to navigate the transition effectively. She developed a solid and detailed plan of execution, ensuring a smooth transition to a state of forward-looking stability and organizational health. Furthermore, and key, Jeanne Marie’s teaching mindset and expertise provided the new organization’s leadership with a strong foundation and the necessary knowledge and confidence to achieve future success. Today, the organization has experienced significant improvements in operations and budgeting, and is executing its goals due to her guidance, wisdom and expertise.&rdquo;</p>
+                </blockquote>
+                <div class="client-testimonial-attr">
+                  <strong data-adlib-cms="fullTestimonials.8.name">Kathy Smith-Willman</strong>
+                  <span data-adlib-cms="fullTestimonials.8.title">Past Board Chair, Red Oak Hope</span>
+                </div>
+              </div>
+          </div>
+          <div class="client-testimonials-nav" aria-label="Testimonial navigation">
+            <button class="client-testimonial-arrow" id="clientTestimonialPrev" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15,6 9,12 15,18"/></svg>
+            </button>
+            <button class="client-testimonial-dot active" data-slide="0" aria-label="Testimonial 1"></button>
+            <button class="client-testimonial-dot" data-slide="1" aria-label="Testimonial 2"></button>
+            <button class="client-testimonial-dot" data-slide="2" aria-label="Testimonial 3"></button>
+            <button class="client-testimonial-dot" data-slide="3" aria-label="Testimonial 4"></button>
+            <button class="client-testimonial-dot" data-slide="4" aria-label="Testimonial 5"></button>
+            <button class="client-testimonial-dot" data-slide="5" aria-label="Testimonial 6"></button>
+            <button class="client-testimonial-dot" data-slide="6" aria-label="Testimonial 7"></button>
+            <button class="client-testimonial-dot" data-slide="7" aria-label="Testimonial 8"></button>
+            <button class="client-testimonial-dot" data-slide="8" aria-label="Testimonial 9"></button>
+            <button class="client-testimonial-arrow" id="clientTestimonialNext" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,6 15,12 9,18"/></svg>
+            </button>
+          </div>
+        </div>
+
       </div>
 
     </section>
@@ -553,6 +688,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=8f78b908e8"></script>
+  <script src="script.js?v=3d0bb749fc"></script>
 </body>
 </html>

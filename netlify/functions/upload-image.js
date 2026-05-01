@@ -13,14 +13,12 @@ exports.handler = async (event) => {
   const allowedPaths = [
     'images/jeanne-marie-ellis.jpg',
     'images/mission-bg.jpg',
-    'images/testimonial-0.jpg',
-    'images/testimonial-1.jpg',
-    'images/testimonial-2.jpg',
     'images/hero-bg.webm',
     'images/hero-bg.mp4'
   ];
+  const isTestimonialPhoto = /^images\/testimonial-\d+\.jpg$/.test(path);
 
-  if (!allowedPaths.includes(path)) {
+  if (!allowedPaths.includes(path) && !isTestimonialPhoto) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid image path' }) };
   }
 
