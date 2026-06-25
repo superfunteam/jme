@@ -1057,16 +1057,19 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
 .client-attribution-photo,
 .client-attribution-avatar {
   display: flex;
-  margin: 28px auto 0;
+  width: 72px;
+  height: 72px;
+  margin: 48px auto 0;
 }
 
 .client-attribution-avatar {
   background: #fff;
+  font-size: 1.25rem;
 }
 
 .client-attribution-photo + .client-testimonial-attr,
 .client-attribution-avatar + .client-testimonial-attr {
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .client-testimonial-attr {
