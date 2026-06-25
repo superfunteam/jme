@@ -199,17 +199,21 @@ const fullTestimonialDots = [
             </button>`
 ].join('\n');
 
-const fullTestimonialSlides = fullTestimonials.map((t, i) =>
-  `              <div class="client-testimonial${i === 0 ? ' active' : ''}" data-index="${i}" data-adlib-each="fullTestimonials" data-adlib-index="${i}">
+const fullTestimonialSlides = fullTestimonials.map((t, i) => {
+  const photoHTML = t.photo
+    ? `<img data-adlib-cms="fullTestimonials.${i}.photo" data-adlib-type="image" src="${esc(t.photo)}" alt="${esc(t.name)}" class="attribution-photo client-attribution-photo" loading="lazy">`
+    : `<div class="attribution-avatar client-attribution-avatar">${initials(t.name)}</div>`;
+  return `              <div class="client-testimonial${i === 0 ? ' active' : ''}" data-index="${i}" data-adlib-each="fullTestimonials" data-adlib-index="${i}">
                 <blockquote>
                   <p data-adlib-cms="fullTestimonials.${i}.quote">&ldquo;${richEsc(t.quote)}&rdquo;</p>
                 </blockquote>
+                ${photoHTML}
                 <div class="client-testimonial-attr">
                   <strong data-adlib-cms="fullTestimonials.${i}.name">${esc(t.name)}</strong>
                   <span data-adlib-cms="fullTestimonials.${i}.title">${esc(t.title)}</span>
                 </div>
-              </div>`
-).join('\n');
+              </div>`;
+}).join('\n');
 
 const fullTestimonialsHTML = `
         <div class="client-testimonials fade-in" data-adlib-section="fullTestimonials">
