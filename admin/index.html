@@ -753,7 +753,11 @@
     function renderFullTestimonials() {
       if (!content.fullTestimonials) content.fullTestimonials = [];
       const container = document.getElementById('fullTestimonials-cards');
-      container.innerHTML = content.fullTestimonials.map((t, i) => `
+      container.innerHTML = content.fullTestimonials.map((t, i) => {
+        const photoHTML = t.photo
+          ? `<img src="/${escAttr(t.photo)}" class="photo-preview" alt="">`
+          : `<div class="photo-placeholder">No photo</div>`;
+        return `
         <div class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Quote ${i + 1}</h3>
@@ -771,8 +775,17 @@
               <input value="${escAttr(t.title)}" onchange="content.fullTestimonials[${i}].title=this.value">
             </div>
           </div>
+          <label>Photo</label>
+          <div class="photo-upload">
+            <span id="ft-photo-${i}">${photoHTML}</span>
+            <div>
+              <input type="file" accept="image/*" onchange="handleFullTestimonialPhoto(this, ${i})">
+              <p style="font-size:14px;color:#5a7a7a;margin-top:4px">Optional. Max 2 MB. Leave empty for initials avatar.</p>
+            </div>
+          </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
       // Init Quill editors
       content.fullTestimonials.forEach((t, i) => {
         const el = document.getElementById('quill-ft-' + i);
@@ -785,9 +798,30 @@
       });
     }
 
+    function handleFullTestimonialPhoto(input, index) {
+      const file = input.files[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Image must be under 2 MB');
+        input.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64 = e.target.result.split(',')[1];
+        const path = `images/client-testimonial-${index}.jpg`;
+        content.fullTestimonials[index].photo = path;
+        pendingUploads = pendingUploads.filter(u => u.path !== path);
+        pendingUploads.push({ path, data: base64 });
+        document.getElementById(`ft-photo-${index}`).innerHTML =
+          `<img src="${e.target.result}" class="photo-preview" alt="">`;
+      };
+      reader.readAsDataURL(file);
+    }
+
     function addFullTestimonial() {
       if (!content.fullTestimonials) content.fullTestimonials = [];
-      content.fullTestimonials.push({ quote: '', name: '', title: '' });
+      content.fullTestimonials.push({ quote: '', name: '', title: '', photo: '' });
       renderFullTestimonials();
     }
 

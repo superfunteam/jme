@@ -1054,6 +1054,21 @@ h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 350; }
   text-align: center;
 }
 
+.client-attribution-photo,
+.client-attribution-avatar {
+  display: flex;
+  margin: 28px auto 0;
+}
+
+.client-attribution-avatar {
+  background: #fff;
+}
+
+.client-attribution-photo + .client-testimonial-attr,
+.client-attribution-avatar + .client-testimonial-attr {
+  margin-top: 12px;
+}
+
 .client-testimonial-attr {
   margin-top: 28px;
   display: flex;
