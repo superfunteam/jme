@@ -9,17 +9,15 @@ exports.handler = async (event) => {
     return { statusCode: 401, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
-  // Only allow specific image paths
-  const allowedPaths = [
-    'images/jeanne-marie-ellis.jpg',
-    'images/mission-bg.jpg',
-    'images/hero-bg.webm',
-    'images/hero-bg.mp4'
-  ];
-  const isTestimonialPhoto = /^images\/testimonial-\d+\.jpg$/.test(path);
-
-  if (!allowedPaths.includes(path) && !isTestimonialPhoto) {
+  // Allow any web-safe image/video filename directly under images/ —
+  // no subdirectories, no path traversal, extension must be a known media type
+  const isValidPath = /^images\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(jpe?g|png|webp|gif|mp4|webm)$/.test(path);
+  if (!isValidPath) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid image path' }) };
+  }
+
+  if (!data || typeof data !== 'string' || data.length > 8 * 1024 * 1024) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Missing or oversized image data' }) };
   }
 
   const repo = process.env.GITHUB_REPO;

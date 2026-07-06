@@ -377,6 +377,7 @@
         <h2>Testimonials</h2>
         <p class="section-desc">Client quotes that rotate in the hero carousel</p>
         <div id="testimonials-cards"></div>
+        <button class="btn-add" onclick="addTestimonial()">+ Add Testimonial</button>
       </div>
 
       <!-- ── 3. SCROLLING BAR ── -->
@@ -487,7 +488,7 @@
           <img id="about-photo-preview" class="photo-preview" src="" alt="" style="display:none">
           <div id="about-photo-placeholder" class="photo-placeholder">No photo</div>
           <div>
-            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'about-photo', 'images/jeanne-marie-ellis.jpg')">
+            <input type="file" accept="image/*" onchange="handleImageUpload(this, 'about-photo', 'about.photo', 'about')">
             <p style="font-size:14px;color:#5a7a7a;margin-top:4px">Max 2 MB. Replaces the current headshot.</p>
           </div>
         </div>
@@ -534,7 +535,44 @@
   <script>
     // ═══════════ STATE ═══════════
     let content = null;
-    let pendingUploads = []; // {path, data} for images to upload on save
+    let pendingUploads = []; // {key, path, data} for images to upload on save
+
+    const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+    // Build a unique repo path for an uploaded file, e.g. images/testimonial-jane-smith-x4k2p.jpg.
+    // The path is stored in the content JSON, so filenames never need to follow a fixed pattern.
+    function makeImagePath(file, prefix) {
+      const ext = file.name.split('.').pop().toLowerCase();
+      const base = file.name.replace(/\.[^.]*$/, '').toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'photo';
+      const suffix = Math.random().toString(36).slice(2, 8);
+      return `images/${prefix}-${base}-${suffix}.${ext}`;
+    }
+
+    function readImageFile(input, onReady) {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = (file.name.split('.').pop() || '').toLowerCase();
+      if (!IMAGE_EXTENSIONS.includes(ext)) {
+        alert('Please choose a JPG, PNG, WebP, or GIF image.');
+        input.value = '';
+        return;
+      }
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Image must be under 2 MB');
+        input.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = e => onReady(file, e.target.result);
+      reader.readAsDataURL(file);
+    }
+
+    // Queue an upload, replacing any earlier file picked for the same slot
+    function queueUpload(key, path, dataUrl) {
+      pendingUploads = pendingUploads.filter(u => u.key !== key);
+      pendingUploads.push({ key, path, data: dataUrl.split(',')[1] });
+    }
     const quillInstances = new Map();
 
     // ═══════════ HELPERS ═══════════
@@ -693,7 +731,10 @@
           : `<div class="photo-placeholder">No photo</div>`;
         return `
         <div class="card">
-          <h3>Testimonial ${i + 1}</h3>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Testimonial ${i + 1}</h3>
+            <button class="btn-remove" onclick="removeTestimonial(${i})" title="Remove">&times;</button>
+          </div>
           <label>Quote</label>
           <div class="quill-editor" id="quill-testimonial-${i}"></div>
           <div class="inline-fields">
@@ -728,25 +769,24 @@
       });
     }
 
+    function addTestimonial() {
+      content.testimonials.push({ quote: '', name: '', title: '', photo: '' });
+      renderTestimonials();
+    }
+
+    function removeTestimonial(i) {
+      content.testimonials.splice(i, 1);
+      renderTestimonials();
+    }
+
     function handleTestimonialPhoto(input, index) {
-      const file = input.files[0];
-      if (!file) return;
-      if (file.size > 2 * 1024 * 1024) {
-        alert('Image must be under 2 MB');
-        input.value = '';
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const base64 = e.target.result.split(',')[1];
-        const path = `images/testimonial-${index}.jpg`;
+      readImageFile(input, (file, dataUrl) => {
+        const path = makeImagePath(file, 'testimonial');
         content.testimonials[index].photo = path;
-        pendingUploads = pendingUploads.filter(u => u.path !== path);
-        pendingUploads.push({ path, data: base64 });
+        queueUpload(`testimonial-${index}`, path, dataUrl);
         document.getElementById(`testimonial-photo-${index}`).innerHTML =
-          `<img src="${e.target.result}" class="photo-preview" alt="">`;
-      };
-      reader.readAsDataURL(file);
+          `<img src="${dataUrl}" class="photo-preview" alt="">`;
+      });
     }
 
     // ═══════════ FULL TESTIMONIALS (Client Quotes) ═══════════
@@ -799,24 +839,13 @@
     }
 
     function handleFullTestimonialPhoto(input, index) {
-      const file = input.files[0];
-      if (!file) return;
-      if (file.size > 2 * 1024 * 1024) {
-        alert('Image must be under 2 MB');
-        input.value = '';
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const base64 = e.target.result.split(',')[1];
-        const path = `images/client-testimonial-${index}.jpg`;
+      readImageFile(input, (file, dataUrl) => {
+        const path = makeImagePath(file, 'client-testimonial');
         content.fullTestimonials[index].photo = path;
-        pendingUploads = pendingUploads.filter(u => u.path !== path);
-        pendingUploads.push({ path, data: base64 });
+        queueUpload(`client-testimonial-${index}`, path, dataUrl);
         document.getElementById(`ft-photo-${index}`).innerHTML =
-          `<img src="${e.target.result}" class="photo-preview" alt="">`;
-      };
-      reader.readAsDataURL(file);
+          `<img src="${dataUrl}" class="photo-preview" alt="">`;
+      });
     }
 
     function addFullTestimonial() {
@@ -1023,27 +1052,18 @@
       }
     }
 
-    function handleImageUpload(input, previewPrefix, imagePath) {
-      const file = input.files[0];
-      if (!file) return;
-      if (file.size > 2 * 1024 * 1024) {
-        alert('Image must be under 2 MB');
-        input.value = '';
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const base64 = e.target.result.split(',')[1];
-        pendingUploads = pendingUploads.filter(u => u.path !== imagePath);
-        pendingUploads.push({ path: imagePath, data: base64 });
+    function handleImageUpload(input, previewPrefix, fieldPath, filePrefix) {
+      readImageFile(input, (file, dataUrl) => {
+        const path = makeImagePath(file, filePrefix);
+        setPath(content, fieldPath, path);
+        queueUpload(previewPrefix, path, dataUrl);
         // Show preview
         const img = document.getElementById(previewPrefix + '-preview');
-        img.src = e.target.result;
+        img.src = dataUrl;
         img.style.display = 'block';
         const placeholder = document.getElementById(previewPrefix + '-placeholder');
         if (placeholder) placeholder.style.display = 'none';
-      };
-      reader.readAsDataURL(file);
+      });
     }
 
     // ═══════════ VIDEO UPLOAD ═══════════
@@ -1060,9 +1080,7 @@
         const base64 = e.target.result.split(',')[1];
         const ext = file.name.split('.').pop().toLowerCase();
         const path = 'images/hero-bg.' + ext;
-        const mime = ext === 'webm' ? 'video/webm' : 'video/mp4';
-        pendingUploads = pendingUploads.filter(u => !u.path.startsWith('images/hero-bg.'));
-        pendingUploads.push({ path, data: base64 });
+        queueUpload('hero-video-' + ext, path, e.target.result);
         // Update content paths
         if (ext === 'webm') content.hero.videoWebm = path;
         else content.hero.videoMp4 = path;
@@ -1090,8 +1108,13 @@
       showStatus('', false);
 
       try {
-        // Upload pending images first
-        for (const upload of pendingUploads) {
+        const data = gatherContent();
+
+        // Upload pending images first, skipping any the content no longer
+        // references (e.g. a photo that was replaced or whose entry was removed)
+        const contentStr = JSON.stringify(data);
+        const uploads = pendingUploads.filter(u => contentStr.includes(u.path));
+        for (const upload of uploads) {
           showStatus('Uploading image...', false);
           const res = await fetch('/.netlify/functions/upload-image', {
             method: 'POST',
@@ -1106,13 +1129,14 @@
               btn.textContent = 'Save Changes';
               return;
             }
-            throw new Error('Image upload failed');
+            let detail = '';
+            try { detail = (await res.json()).error || ''; } catch (_) {}
+            throw new Error('Image upload failed' + (detail ? ': ' + detail : ''));
           }
         }
         pendingUploads = [];
 
         // Save content
-        const data = gatherContent();
         const res = await fetch('/.netlify/functions/save', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1128,7 +1152,7 @@
           throw new Error('Save failed');
         }
       } catch (e) {
-        showStatus('Something went wrong. Please try again.', true);
+        showStatus((e.message || 'Something went wrong.') + ' Please try again.', true);
         console.error(e);
       }
 
