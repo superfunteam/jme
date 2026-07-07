@@ -226,6 +226,14 @@
       font-size: 14px;
       flex-shrink: 0;
     }
+    /* About photo shows as the same portrait crop used on the live site */
+    .photo-preview.portrait,
+    .photo-placeholder.portrait {
+      width: 120px;
+      height: 180px;
+      border-radius: 14px;
+    }
+    .photo-preview.portrait { object-position: center 15%; }
 
     /* ── Service Expandable ── */
     .service-card .deliverables-section { display: none; padding-top: 8px; }
@@ -485,8 +493,8 @@
         <div class="quill-editor" data-field="about.bio.2"></div>
         <label>Photo</label>
         <div class="photo-upload">
-          <img id="about-photo-preview" class="photo-preview" src="" alt="" style="display:none">
-          <div id="about-photo-placeholder" class="photo-placeholder">No photo</div>
+          <img id="about-photo-preview" class="photo-preview portrait" src="" alt="" style="display:none">
+          <div id="about-photo-placeholder" class="photo-placeholder portrait">No photo</div>
           <div>
             <input type="file" accept="image/*" onchange="handleImageUpload(this, 'about-photo', 'about.photo', 'about')">
             <p style="font-size:14px;color:#5a7a7a;margin-top:4px">Max 2 MB. Replaces the current headshot.</p>
