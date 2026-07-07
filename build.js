@@ -280,6 +280,7 @@ const html = `<!DOCTYPE html>
         <a href="#approach" class="nav-link">Our Approach</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#clients" class="nav-link">Who We Serve</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link nav-cta">Contact</a>
       </div>
@@ -403,6 +404,7 @@ ${servicesHTML}
     </section>
 
     <!-- ==================== WHO WE SERVE ==================== -->
+    <div class="clients-wrap">
     <section id="clients" class="section clients-section" data-adlib-section="clients">
       <picture class="section-wave" aria-hidden="true"><source media="(max-width: 680px)" srcset="images/wave-sage-mobile.png"><img src="images/wave-sage.png" alt=""></picture>
       <div class="container">
@@ -414,11 +416,19 @@ ${servicesHTML}
         <div class="client-categories">
 ${clientsHTML}
         </div>
-${fullTestimonialsHTML}
 
       </div>
 
     </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+${fullTestimonialsHTML}
+      </div>
+
+    </section>
+    </div>
 
     <!-- ==================== ABOUT ==================== -->
     <section id="about" class="section about-section" data-adlib-section="about">
