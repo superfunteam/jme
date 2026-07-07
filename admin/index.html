@@ -502,15 +502,17 @@
         <div class="quill-editor" data-field="contact.intro"></div>
         <div class="inline-fields">
           <div>
+            <label>Phone</label>
+            <input id="phone-input" type="tel" onchange="content.contact.direct = scramble(this.value)">
+          </div>
+          <div>
             <label>Email</label>
             <input data-field="contact.email" type="email">
           </div>
-          <div>
-            <label>Location</label>
-            <input data-field="contact.location">
-          </div>
         </div>
-        <p class="section-desc">The phone number is intentionally not editable here — it's hidden from spam scrapers and revealed on the site only when a visitor clicks. Ask your developer to change it.</p>
+        <label>Location</label>
+        <input data-field="contact.location">
+        <p class="section-desc">The phone number is stored scrambled and shown on the site only after a visitor clicks "Click to Reveal Phone Number" — spam bots scraping the site never see it. Edit it here like normal.</p>
       </div>
 
       <!-- ── 10. FOOTER ── -->
@@ -666,7 +668,7 @@
 
     // ═══════════ LOAD CONTENT ═══════════
     async function loadContent() {
-      const res = await fetch('/content.json');
+      const res = await fetch('/content.json', { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed to load content');
       content = await res.json();
       populateForms();
@@ -681,12 +683,23 @@
     }
 
     // ═══════════ POPULATE FORMS ═══════════
+    // The phone number is stored scrambled (reversed, digits rotated by 5)
+    // under contact.direct so it never appears readable in content.json,
+    // which is publicly fetchable. Self-inverse: scramble(scramble(s)) === s.
+    function scramble(s) {
+      return (s || '').split('').reverse()
+        .map(c => /\d/.test(c) ? String((Number(c) + 5) % 10) : c).join('');
+    }
+
     function populateForms() {
       // Static data-field inputs (non-Quill)
       document.querySelectorAll('input[data-field], textarea[data-field], select[data-field]').forEach(el => {
         const val = getPath(content, el.dataset.field);
         if (val !== undefined) el.value = val;
       });
+      // Phone input holds the readable number; content keeps it scrambled
+      document.getElementById('phone-input').value =
+        content.contact && content.contact.direct ? scramble(content.contact.direct) : '';
       // Init Quill editors for static data-field divs
       quillInstances.clear();
       document.querySelectorAll('.quill-editor[data-field]').forEach(el => {
