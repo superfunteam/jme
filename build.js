@@ -173,7 +173,15 @@ ${deliverables}
 // Build client categories
 const animClasses = ['slide-right', '', 'slide-left'];
 const clientsHTML = clients.map((cat, ci) => {
-  const clientItems = cat.clients.map((c, cj) =>
+  // Display alphabetically regardless of admin order; each entry keeps its
+  // original index so the adlib attributes still map to content.json.
+  // Directory-style: leading "The" is ignored and numbers sort numerically
+  // ("Region 5" before "Region 12")
+  const sortName = (n) => n.replace(/^the\s+/i, '');
+  const sortedClients = cat.clients
+    .map((c, cj) => ({ c, cj }))
+    .sort((a, b) => sortName(a.c.name).localeCompare(sortName(b.c.name), 'en', { numeric: true, sensitivity: 'base' }));
+  const clientItems = sortedClients.map(({ c, cj }) =>
     `              <li data-adlib-each="clients.${ci}.clients" data-adlib-index="${cj}"><strong data-adlib-cms="clients.${ci}.clients.${cj}.name">${esc(c.name)}</strong> <span class="client-location" data-adlib-cms="clients.${ci}.clients.${cj}.location">${esc(c.location)}</span></li>`
   ).join('\n');
   const animClass = animClasses[ci] ? ' ' + animClasses[ci] : '';
