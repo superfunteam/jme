@@ -357,6 +357,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  // ── Phone reveal ──
+  // The number is stored reversed and only assembled on click, so it never
+  // appears in the page markup or content JSON where scrapers can harvest it
+  document.querySelectorAll('.phone-reveal').forEach(link => {
+    const onReveal = (e) => {
+      e.preventDefault();
+      const number = '5097-108-215'.split('').reverse().join('');
+      link.textContent = number;
+      link.href = 'tel:' + number.replace(/\D/g, '');
+      link.removeEventListener('click', onReveal);
+    };
+    link.addEventListener('click', onReveal);
+  });
+
+
   // ── Init ──
   initTextReveal();
   updateNav();
